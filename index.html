@@ -3,277 +3,761 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Abiy &amp; Binyam Insurance Brokers — Ethiopia's #1 Insurance Broker</title>
+<title>ABIB — World-Class Redesign Concept</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="shared.css"/>
 <style>
-/* ── NAV LOGO OVERRIDE ── */
-.nav-logo img { width: 44px; height: 44px; border-radius: 10px; object-fit: cover; }
-.logo-text { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.05rem; line-height: 1.2; }
-.logo-text span { display: block; font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 400; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 1px; }
+/* ============================================================
+   DESIGN SYSTEM
+   Aesthetic: Refined luxury meets African modernity
+   Colors: Deep navy + warm gold + white — trust, prestige, Ethiopian heritage
+   ============================================================ */
+:root {
+  --navy:   #050d1a;
+  --navy2:  #0b1628;
+  --navy3:  #0f1e35;
+  --gold:   #c9943a;
+  --gold2:  #e8b85a;
+  --gold3:  #f5d38a;
+  --cream:  #faf6ee;
+  --white:  #ffffff;
+  --muted:  #7a8fa8;
+  --border: rgba(201,148,58,0.18);
+  --border2: rgba(255,255,255,0.07);
+  --glass:  rgba(11,22,40,0.85);
+  --r: 14px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  background:var(--navy);
+  color:var(--cream);
+  font-family:'Outfit',sans-serif;
+  overflow-x:hidden;
+  line-height:1.65;
+}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
 
-/* ── HERO ── */
-.hero {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  padding: 120px 5vw 80px;
-  position: relative;
-  overflow: hidden;
-  gap: 60px;
+/* ---- GRAIN OVERLAY ---- */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;opacity:.4;
 }
-.hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(201,148,58,0.08) 0%, transparent 60%);
-}
-.hero-bg {
-  position: absolute; right: -100px; top: -100px;
-  width: 700px; height: 700px;
-  background: conic-gradient(from 0deg at 50% 50%,
-    transparent 0deg, rgba(201,148,58,0.04) 60deg,
-    transparent 120deg, rgba(201,148,58,0.03) 180deg,
-    transparent 240deg, rgba(201,148,58,0.04) 300deg, transparent 360deg);
-  border-radius: 50%;
-  animation: spin 60s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
 
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(201,148,58,0.12); border: 1px solid rgba(201,148,58,0.3);
-  border-radius: 100px; padding: 6px 16px;
-  font-size: 12px; font-weight: 600; color: #e8b85a;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  margin-bottom: 24px; animation: fadeUp .8s both;
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:0 5vw;
+  display:flex;align-items:center;justify-content:space-between;
+  height:76px;
+  background:rgba(5,13,26,0.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:all 0.3s;
 }
-.dot-pulse { width: 6px; height: 6px; border-radius: 50%; background: #e8b85a; animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
+.nav-logo{
+  display:flex;align-items:center;gap:12px;
+}
+.logo-mark{
+  width:38px;height:38px;border-radius:8px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:17px;color:var(--navy);letter-spacing:-1px;
+  flex-shrink:0;
+}
+.logo-text{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;line-height:1.2}
+.logo-text span{display:block;font-family:'Outfit',sans-serif;font-size:10px;font-weight:400;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:1px}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:14px;font-weight:500;color:rgba(250,246,238,0.7);transition:color .2s;letter-spacing:.3px}
+.nav-links a:hover{color:var(--gold2)}
+.nav-lang{
+  display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,0.05);border:1px solid var(--border2);
+  border-radius:6px;padding:5px 12px;font-size:12px;font-weight:600;
+  color:var(--muted);cursor:pointer;transition:all .2s;
+}
+.nav-lang:hover{border-color:var(--border);color:var(--cream)}
+.nav-cta{
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--navy);padding:10px 22px;border-radius:8px;
+  font-size:13px;font-weight:700;letter-spacing:.3px;
+  transition:all .25s;box-shadow:0 4px 16px rgba(201,148,58,0.3);
+  border:none;cursor:pointer;
+}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(201,148,58,0.4)}
 
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.4rem, 4.5vw, 4rem);
-  font-weight: 900; line-height: 1.1;
-  margin-bottom: 24px; animation: fadeUp .8s .1s both;
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  min-height:100vh;
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:120px 5vw 80px;
+  position:relative;overflow:hidden;
+  gap:60px;
 }
-.hero h1 em {
-  font-style: normal;
-  background: linear-gradient(135deg, var(--gold), #f5d38a);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+/* Geometric background */
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(201,148,58,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 20% 80%, rgba(11,22,40,0.9) 0%, transparent 70%);
 }
-.hero-sub {
-  font-size: 1.05rem; color: rgba(250,246,238,0.65);
-  max-width: 480px; margin-bottom: 36px; font-weight: 300;
-  animation: fadeUp .8s .2s both;
+.hero-bg-pattern{
+  position:absolute;right:-100px;top:-100px;
+  width:700px;height:700px;
+  background:conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(201,148,58,0.04) 60deg, transparent 120deg, rgba(201,148,58,0.03) 180deg, transparent 240deg, rgba(201,148,58,0.04) 300deg, transparent 360deg);
+  border-radius:50%;
+  animation:spin 60s linear infinite;
 }
-.hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; animation: fadeUp .8s .3s both; }
-.hero-stats {
-  display: flex; gap: 32px; margin-top: 48px; padding-top: 32px;
-  border-top: 1px solid var(--border2);
-  animation: fadeUp .8s .4s both; flex-wrap: wrap;
-}
-.stat-item .num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: #e8b85a; line-height: 1; }
-.stat-item .lbl { font-size: 12px; color: var(--muted); margin-top: 4px; font-weight: 500; }
-@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+@keyframes spin{to{transform:rotate(360deg)}}
 
-/* ── HERO RIGHT — LOGO + QUICK CONTACTS ── */
-.hero-right {
-  position: relative; z-index: 1;
-  display: flex; flex-direction: column; align-items: center; gap: 32px;
-  animation: fadeUp .8s .2s both;
+.hero-content{position:relative;z-index:1}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(201,148,58,0.12);border:1px solid rgba(201,148,58,0.3);
+  border-radius:100px;padding:6px 16px;
+  font-size:12px;font-weight:600;color:var(--gold2);
+  letter-spacing:1.5px;text-transform:uppercase;
+  margin-bottom:24px;
+  animation:fadeUp .8s both;
 }
-.hero-logo-wrap {
-  position: relative;
+.hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold2);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.6rem,5vw,4.2rem);
+  font-weight:900;line-height:1.1;
+  margin-bottom:24px;
+  animation:fadeUp .8s .1s both;
 }
-.hero-logo-wrap img {
-  width: 280px; height: 280px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 0 0 12px rgba(201,148,58,0.08),
-              0 0 0 24px rgba(201,148,58,0.04),
-              0 32px 80px rgba(0,0,0,0.6);
-  animation: logoFloat 6s ease-in-out infinite;
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(135deg,var(--gold),var(--gold3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
 }
-@keyframes logoFloat {
-  0%,100%{ transform: translateY(0px); }
-  50%{ transform: translateY(-12px); }
+.hero-sub{
+  font-size:1.05rem;color:rgba(250,246,238,0.65);
+  max-width:480px;margin-bottom:36px;font-weight:300;
+  animation:fadeUp .8s .2s both;
 }
-.hero-logo-glow {
-  position: absolute; inset: -20px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,148,58,0.15) 0%, transparent 70%);
-  animation: glowPulse 3s ease-in-out infinite;
+.hero-actions{
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  animation:fadeUp .8s .3s both;
 }
-@keyframes glowPulse { 0%,100%{opacity:.6} 50%{opacity:1} }
-
-.quick-contacts {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%;
+.btn-primary{
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--navy);padding:14px 28px;border-radius:10px;
+  font-size:15px;font-weight:700;letter-spacing:.3px;
+  box-shadow:0 6px 20px rgba(201,148,58,0.35);
+  transition:all .25s;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:8px;
 }
-.qc-card {
-  background: rgba(11,22,40,0.85);
-  border: 1px solid var(--border);
-  border-radius: 12px; padding: 16px 18px;
-  backdrop-filter: blur(16px);
-  display: flex; align-items: center; gap: 12px;
-  text-decoration: none; transition: all .25s;
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,148,58,0.45)}
+.btn-secondary{
+  background:transparent;border:1px solid rgba(201,148,58,0.4);
+  color:var(--gold2);padding:14px 28px;border-radius:10px;
+  font-size:15px;font-weight:600;
+  transition:all .25s;cursor:pointer;display:inline-flex;align-items:center;gap:8px;
 }
-.qc-card:hover { border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.4); }
-.qc-icon {
-  width: 38px; height: 38px; border-radius: 9px; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center; font-size: 18px;
+.btn-secondary:hover{background:rgba(201,148,58,0.08);border-color:var(--gold)}
+
+.hero-stats{
+  display:flex;gap:32px;margin-top:48px;padding-top:32px;
+  border-top:1px solid var(--border2);
+  animation:fadeUp .8s .4s both;
 }
-.qc-label { font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .8px; }
-.qc-val { font-size: 13px; color: var(--cream); font-weight: 600; margin-top: 2px; }
+.stat-item .num{
+  font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;
+  color:var(--gold2);line-height:1;
+}
+.stat-item .lbl{font-size:12px;color:var(--muted);margin-top:4px;font-weight:500}
 
-/* ── TRUST BAR ── */
-.trust-bar { background: linear-gradient(135deg, rgba(201,148,58,0.12), rgba(201,148,58,0.06)); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 44px 5vw; }
-.trust-bar-inner { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 24px; text-align: center; }
-.trust-stat .n { font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 900; background: linear-gradient(135deg,var(--gold),#f5d38a); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; }
-.trust-stat .l { font-size: 13px; color: var(--muted); margin-top: 6px; font-weight: 500; }
+/* HERO RIGHT — Quote Card */
+.hero-card{
+  position:relative;z-index:1;
+  animation:fadeUp .8s .2s both;
+}
+.quote-card{
+  background:var(--glass);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:32px;
+  backdrop-filter:blur(20px);
+  box-shadow:0 24px 64px rgba(0,0,0,0.5);
+  position:relative;overflow:hidden;
+}
+.quote-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--gold),var(--gold2),transparent);
+}
+.quote-card h3{
+  font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;
+  margin-bottom:6px;
+}
+.quote-card p{font-size:13px;color:var(--muted);margin-bottom:24px}
 
-/* ── SERVICES ── */
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 20px; }
-.service-card { background: var(--navy3); border: 1px solid var(--border2); border-radius: var(--r); padding: 28px 24px; transition: all .3s; position: relative; overflow: hidden; }
-.service-card::after { content:''; position:absolute; bottom:0;left:0;right:0;height:2px; background:linear-gradient(90deg,var(--gold),#e8b85a); transform:scaleX(0);transform-origin:left;transition:transform .3s; }
-.service-card:hover { border-color:rgba(201,148,58,0.3); transform:translateY(-4px); box-shadow:0 20px 48px rgba(0,0,0,0.4); }
-.service-card:hover::after { transform:scaleX(1); }
-.svc-icon { width:50px;height:50px;border-radius:12px;background:rgba(201,148,58,0.1);border:1px solid rgba(201,148,58,0.2);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px; }
-.service-card h3 { font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:10px; }
-.service-card p { font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px; }
-.svc-link { font-size:13px;font-weight:600;color:var(--gold);display:flex;align-items:center;gap:6px;transition:gap .2s; }
-.service-card:hover .svc-link { gap:10px; }
+.form-group{margin-bottom:16px}
+.form-label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;display:block}
+.form-select, .form-input{
+  width:100%;background:rgba(255,255,255,0.05);
+  border:1px solid var(--border2);border-radius:8px;
+  padding:11px 14px;color:var(--cream);font-family:'Outfit',sans-serif;
+  font-size:14px;outline:none;transition:border-color .2s;
+  appearance:none;
+}
+.form-select:focus,.form-input:focus{border-color:var(--gold);background:rgba(201,148,58,0.06)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.wa-btn{
+  width:100%;background:linear-gradient(135deg,#22c55e,#16a34a);
+  border:none;border-radius:8px;padding:13px;
+  color:#fff;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:all .2s;margin-top:4px;
+}
+.wa-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(34,197,94,0.35)}
+.divider{
+  display:flex;align-items:center;gap:12px;margin:16px 0;
+  font-size:12px;color:var(--muted);
+}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border2)}
+.submit-btn{
+  width:100%;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  border:none;border-radius:8px;padding:13px;
+  color:var(--navy);font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;
+  cursor:pointer;transition:all .2s;
+}
+.submit-btn:hover{box-shadow:0 6px 20px rgba(201,148,58,0.4);transform:translateY(-1px)}
+.trust-row{
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  margin-top:16px;font-size:11px;color:var(--muted);
+}
+.trust-badge{display:flex;align-items:center;gap:4px}
 
-/* ── PROCESS ── */
-.process-steps { display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;position:relative; }
-.process-steps::before { content:'';position:absolute;top:40px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--border),var(--gold),var(--border),transparent); }
-.step { padding:0 16px;text-align:center; }
-.step-num { width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--navy3),var(--navy2));border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--gold);margin:0 auto 20px;position:relative;z-index:1;box-shadow:0 0 0 6px rgba(201,148,58,0.08); }
-.step h4 { font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:8px; }
-.step p { font-size:13px;color:var(--muted);line-height:1.6; }
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── WHY US ── */
-.why-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px; }
-.why-card { padding:28px 24px;border-radius:var(--r);border:1px solid var(--border2);background:var(--navy3);transition:all .3s; }
-.why-card:hover { border-color:var(--border);transform:translateY(-3px); }
-.why-num { font-family:'Playfair Display',serif;font-size:4rem;font-weight:900;color:rgba(201,148,58,0.12);line-height:1;margin-bottom:16px; }
-.why-card h3 { font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:8px; }
-.why-card p { font-size:13px;color:var(--muted);line-height:1.6; }
+/* ============================================================
+   SECTION COMMONS
+   ============================================================ */
+section{padding:100px 5vw}
+.section-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(201,148,58,0.1);border:1px solid rgba(201,148,58,0.25);
+  border-radius:100px;padding:5px 14px;
+  font-size:11px;font-weight:600;color:var(--gold);
+  letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;
+}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;
+  line-height:1.2;margin-bottom:16px;
+}
+.section-sub{font-size:1rem;color:rgba(250,246,238,0.55);max-width:520px;font-weight:300}
+.section-header{margin-bottom:56px}
 
-/* ── PARTNER SCROLL ── */
-.partner-scroll { overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);mask:linear-gradient(90deg,transparent,black 10%,black 90%,transparent); }
-.partner-track { display:flex;gap:28px;animation:scroll 35s linear infinite;width:max-content; }
-.partner-track:hover { animation-play-state:paused; }
-@keyframes scroll { to{transform:translateX(-50%)} }
-.partner-logo { background:rgba(255,255,255,0.04);border:1px solid var(--border2);border-radius:10px;padding:12px 24px;font-size:13px;font-weight:600;color:var(--muted);white-space:nowrap;transition:all .2s; }
-.partner-logo:hover { border-color:var(--border);color:var(--cream); }
+/* ============================================================
+   INSURANCE TYPES
+   ============================================================ */
+.services{background:var(--navy2)}
+.services-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;
+}
+.service-card{
+  background:var(--navy3);border:1px solid var(--border2);
+  border-radius:var(--r);padding:28px 24px;
+  transition:all .3s;cursor:pointer;position:relative;overflow:hidden;
+  group:true;
+}
+.service-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--gold2));
+  transform:scaleX(0);transform-origin:left;transition:transform .3s;
+}
+.service-card:hover{border-color:rgba(201,148,58,0.3);transform:translateY(-4px);box-shadow:0 20px 48px rgba(0,0,0,0.4)}
+.service-card:hover::after{transform:scaleX(1)}
+.service-icon{
+  width:52px;height:52px;border-radius:12px;
+  background:rgba(201,148,58,0.1);border:1px solid rgba(201,148,58,0.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;margin-bottom:18px;
+  transition:background .3s;
+}
+.service-card:hover .service-icon{background:rgba(201,148,58,0.2)}
+.service-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:10px}
+.service-card p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px}
+.service-link{font-size:13px;font-weight:600;color:var(--gold);display:flex;align-items:center;gap:6px;transition:gap .2s}
+.service-card:hover .service-link{gap:10px}
 
-/* ── TESTIMONIALS ── */
-.test-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px; }
-.test-card { background:var(--navy3);border:1px solid var(--border2);border-radius:var(--r);padding:28px;transition:all .3s; }
-.test-card:hover { border-color:var(--border);box-shadow:0 16px 40px rgba(0,0,0,.3); }
-.qmark { font-family:'Playfair Display',serif;font-size:4.5rem;color:rgba(201,148,58,0.15);line-height:.6;margin-bottom:10px; }
-.test-text { font-size:14px;color:rgba(250,246,238,.75);line-height:1.7;margin-bottom:20px; }
-.test-author { display:flex;align-items:center;gap:12px; }
-.test-avatar { width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#e8b85a);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;color:var(--navy);font-size:14px; }
-.test-name { font-size:14px;font-weight:600; }
-.test-role { font-size:12px;color:var(--muted); }
-.stars { color:var(--gold);font-size:13px;margin-top:4px;letter-spacing:2px; }
+/* ============================================================
+   PROCESS
+   ============================================================ */
+.process{background:var(--navy)}
+.process-steps{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:0;position:relative;
+}
+.process-steps::before{
+  content:'';position:absolute;top:40px;left:10%;right:10%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--border),var(--gold),var(--border),transparent);
+}
+.step{padding:0 20px;text-align:center;position:relative}
+.step-num{
+  width:80px;height:80px;border-radius:50%;
+  background:linear-gradient(135deg,var(--navy3),var(--navy2));
+  border:2px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--gold);
+  margin:0 auto 20px;position:relative;z-index:1;
+  box-shadow:0 0 0 6px rgba(201,148,58,0.08);
+}
+.step h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:8px}
+.step p{font-size:13px;color:var(--muted);line-height:1.6}
 
-/* ── CTA ── */
-.cta-section { background:linear-gradient(135deg,var(--navy3),var(--navy2));text-align:center;padding:100px 5vw;position:relative;overflow:hidden; }
-.cta-section::before { content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(201,148,58,0.1) 0%,transparent 70%); }
-.whatsapp-cta { background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:700;box-shadow:0 6px 20px rgba(34,197,94,0.3);transition:all .25s;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:8px; }
-.whatsapp-cta:hover { transform:translateY(-2px);box-shadow:0 10px 28px rgba(34,197,94,0.4); }
+/* ============================================================
+   STATS / TRUST BAR
+   ============================================================ */
+.trust-bar{
+  background:linear-gradient(135deg,rgba(201,148,58,0.12),rgba(201,148,58,0.06));
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:48px 5vw;
+}
+.trust-bar-inner{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:32px;text-align:center;
+}
+.trust-stat .n{
+  font-family:'Playfair Display',serif;
+  font-size:2.8rem;font-weight:900;
+  background:linear-gradient(135deg,var(--gold),var(--gold3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;line-height:1;
+}
+.trust-stat .l{font-size:13px;color:var(--muted);margin-top:6px;font-weight:500}
 
+/* ============================================================
+   PARTNERS / CLIENTS
+   ============================================================ */
+.partners{background:var(--navy2)}
+.partner-scroll{
+  overflow:hidden;position:relative;
+  -webkit-mask:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);
+  mask:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);
+}
+.partner-track{
+  display:flex;gap:32px;
+  animation:scroll 30s linear infinite;
+  width:max-content;
+}
+.partner-track:hover{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.partner-logo{
+  background:rgba(255,255,255,0.04);
+  border:1px solid var(--border2);
+  border-radius:10px;padding:14px 28px;
+  font-size:13px;font-weight:600;color:var(--muted);
+  white-space:nowrap;transition:all .2s;
+  display:flex;align-items:center;gap:10px;
+}
+.partner-logo:hover{border-color:var(--border);color:var(--cream);background:rgba(201,148,58,0.05)}
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.testimonials{background:var(--navy)}
+.test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.test-card{
+  background:var(--navy3);border:1px solid var(--border2);
+  border-radius:var(--r);padding:28px;
+  transition:all .3s;position:relative;
+}
+.test-card:hover{border-color:var(--border);box-shadow:0 16px 40px rgba(0,0,0,0.3)}
+.quote-mark{
+  font-family:'Playfair Display',serif;font-size:5rem;
+  color:var(--gold);opacity:.15;line-height:.6;margin-bottom:8px;
+}
+.test-text{font-size:14px;color:rgba(250,246,238,0.75);line-height:1.7;margin-bottom:20px}
+.test-author{display:flex;align-items:center;gap:12px}
+.test-avatar{
+  width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-weight:700;color:var(--navy);font-size:14px;
+}
+.test-name{font-size:14px;font-weight:600}
+.test-role{font-size:12px;color:var(--muted)}
+.stars{color:var(--gold);font-size:13px;margin-top:4px;letter-spacing:2px}
+
+/* ============================================================
+   AI ASSISTANT PREVIEW
+   ============================================================ */
+.ai-section{
+  background:linear-gradient(135deg,var(--navy2),var(--navy3));
+  position:relative;overflow:hidden;
+}
+.ai-section::before{
+  content:'';position:absolute;
+  right:-200px;top:-200px;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(201,148,58,0.06) 0%,transparent 70%);
+  border-radius:50%;
+}
+.ai-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.ai-chat{
+  background:var(--navy);border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.4);
+}
+.chat-header{
+  background:var(--navy3);border-bottom:1px solid var(--border2);
+  padding:16px 20px;display:flex;align-items:center;gap:12px;
+}
+.chat-avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;
+}
+.chat-info .name{font-size:14px;font-weight:600}
+.chat-info .status{font-size:11px;color:#22c55e;display:flex;align-items:center;gap:4px}
+.chat-info .status::before{content:'';width:6px;height:6px;border-radius:50%;background:#22c55e}
+.chat-body{padding:20px;display:flex;flex-direction:column;gap:12px;min-height:280px}
+.msg{max-width:80%;font-size:13px;line-height:1.6}
+.msg.bot{
+  background:var(--navy3);border:1px solid var(--border2);
+  border-radius:4px 12px 12px 12px;padding:12px 14px;color:var(--cream);
+}
+.msg.user{
+  background:linear-gradient(135deg,rgba(201,148,58,0.2),rgba(201,148,58,0.1));
+  border:1px solid rgba(201,148,58,0.25);
+  border-radius:12px 4px 12px 12px;padding:12px 14px;color:var(--cream);
+  align-self:flex-end;
+}
+.msg.typing{display:flex;align-items:center;gap:4px;padding:12px 14px}
+.dot-typing{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:blink 1.4s infinite}
+.dot-typing:nth-child(2){animation-delay:.2s}
+.dot-typing:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{transform:scale(0.8);opacity:.5}40%{transform:scale(1.1);opacity:1}}
+.chat-input-row{
+  border-top:1px solid var(--border2);padding:14px 16px;
+  display:flex;gap:8px;
+}
+.chat-input{
+  flex:1;background:rgba(255,255,255,0.04);
+  border:1px solid var(--border2);border-radius:8px;
+  padding:10px 14px;color:var(--muted);font-family:'Outfit',sans-serif;
+  font-size:13px;outline:none;
+}
+.chat-send{
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  border:none;border-radius:8px;padding:10px 16px;
+  color:var(--navy);font-size:16px;cursor:pointer;
+}
+
+/* ============================================================
+   CLIENT PORTAL PREVIEW
+   ============================================================ */
+.portal-section{background:var(--navy2)}
+.portal-preview{
+  background:var(--navy);border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.5);
+}
+.portal-tabs{
+  background:var(--navy3);border-bottom:1px solid var(--border2);
+  display:flex;gap:0;
+}
+.p-tab{
+  padding:14px 20px;font-size:13px;font-weight:500;color:var(--muted);
+  cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;
+}
+.p-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.portal-body{padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.policy-item{
+  background:var(--navy3);border:1px solid var(--border2);
+  border-radius:10px;padding:16px;
+  display:flex;justify-content:space-between;align-items:flex-start;
+}
+.policy-item .pi-title{font-size:13px;font-weight:600;margin-bottom:4px}
+.policy-item .pi-sub{font-size:11px;color:var(--muted)}
+.policy-badge{
+  font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;
+  background:rgba(34,197,94,0.15);color:#4ade80;border:1px solid rgba(34,197,94,0.2);
+}
+.policy-badge.exp{background:rgba(245,158,11,0.15);color:#fbbf24;border-color:rgba(245,158,11,0.2)}
+.portal-inner{display:grid;grid-template-columns:5fr 4fr;gap:48px;align-items:center}
+
+/* ============================================================
+   CTA SECTION
+   ============================================================ */
+.cta-section{
+  background:linear-gradient(135deg,var(--navy3) 0%,var(--navy2) 50%,var(--navy3) 100%);
+  text-align:center;padding:120px 5vw;position:relative;overflow:hidden;
+}
+.cta-section::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(201,148,58,0.1) 0%,transparent 70%);
+}
+.cta-section h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,4vw,3.2rem);font-weight:900;
+  line-height:1.15;margin-bottom:20px;position:relative;
+}
+.cta-section p{
+  font-size:1.05rem;color:rgba(250,246,238,0.55);
+  max-width:500px;margin:0 auto 40px;font-weight:300;position:relative;
+}
+.cta-actions{
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  flex-wrap:wrap;position:relative;
+}
+.whatsapp-cta{
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+  color:#fff;padding:14px 28px;border-radius:10px;
+  font-size:15px;font-weight:700;letter-spacing:.3px;
+  box-shadow:0 6px 20px rgba(34,197,94,0.3);
+  transition:all .25s;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:8px;
+}
+.whatsapp-cta:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(34,197,94,0.4)}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{
+  background:var(--navy);border-top:1px solid var(--border2);
+  padding:64px 5vw 32px;
+}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:48px;margin-bottom:48px;
+}
+.footer-brand .logo-mark{margin-bottom:16px}
+.footer-brand p{font-size:13px;color:var(--muted);line-height:1.7;max-width:280px;margin-bottom:20px}
+.social-links{display:flex;gap:10px}
+.social-btn{
+  width:36px;height:36px;border-radius:8px;
+  background:rgba(255,255,255,0.05);border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;color:var(--muted);transition:all .2s;cursor:pointer;
+}
+.social-btn:hover{background:rgba(201,148,58,0.1);border-color:var(--border);color:var(--gold)}
+.footer-col h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--cream);margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col ul li a{font-size:13px;color:var(--muted);transition:color .2s}
+.footer-col ul li a:hover{color:var(--gold2)}
+.footer-bottom{
+  border-top:1px solid var(--border2);padding-top:24px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12px;color:var(--muted);flex-wrap:wrap;gap:12px;
+}
+.nbe-badge{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(201,148,58,0.08);border:1px solid var(--border);
+  border-radius:6px;padding:6px 14px;font-size:11px;color:var(--gold);
+  font-weight:600;
+}
+
+/* ============================================================
+   FLOATING ACTIONS
+   ============================================================ */
+.floating-actions{
+  position:fixed;bottom:28px;right:28px;z-index:900;
+  display:flex;flex-direction:column;gap:10px;
+}
+.float-btn{
+  width:54px;height:54px;border-radius:50%;border:none;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;cursor:pointer;
+  box-shadow:0 6px 20px rgba(0,0,0,.4);
+  transition:all .25s;
+}
+.float-btn:hover{transform:scale(1.08)}
+.wa-float{background:linear-gradient(135deg,#25d366,#128c7e)}
+.tel-float{background:linear-gradient(135deg,#2aabee,#1877c0)}
+.chat-float{
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--navy);
+}
+.float-label{
+  position:absolute;right:64px;
+  background:var(--navy2);border:1px solid var(--border);
+  border-radius:6px;padding:5px 12px;font-size:11px;font-weight:600;
+  white-space:nowrap;color:var(--cream);opacity:0;transition:opacity .2s;pointer-events:none;
+}
+.float-btn:hover .float-label{opacity:1}
+.float-wrap{position:relative;display:flex;align-items:center}
+
+/* ============================================================
+   SCROLL ANIMATIONS
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:none}
+
+/* ============================================================
+   SECTION: WHY US
+   ============================================================ */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.why-card{
+  padding:28px 24px;border-radius:var(--r);
+  border:1px solid var(--border2);background:var(--navy3);
+  position:relative;overflow:hidden;transition:all .3s;
+}
+.why-card:hover{border-color:var(--border);transform:translateY(-3px)}
+.why-num{
+  font-family:'Playfair Display',serif;font-size:4rem;font-weight:900;
+  color:rgba(201,148,58,0.12);line-height:1;margin-bottom:16px;
+}
+.why-card h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:8px}
+.why-card p{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* RESPONSIVE */
 @media(max-width:900px){
-  .hero { grid-template-columns:1fr; padding:100px 5vw 60px; gap:48px; }
-  .hero-right { order: -1; }
-  .hero-logo-wrap img { width:200px;height:200px; }
-  .process-steps::before { display:none; }
+  .hero{grid-template-columns:1fr;padding:100px 5vw 60px;gap:40px}
+  .ai-inner,.portal-inner{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .process-steps::before{display:none}
 }
 @media(max-width:600px){
-  .hero-stats { gap:20px; }
-  .quick-contacts { grid-template-columns:1fr; }
+  nav .nav-links{display:none}
+  .footer-grid{grid-template-columns:1fr}
+  .hero-stats{flex-wrap:wrap;gap:20px}
+  .portal-body{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="index.html" class="nav-logo" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit">
-    <img src="logo.png" alt="ABIB Logo" style="width:44px;height:44px;border-radius:10px;object-fit:cover"/>
-    <div class="logo-text">Abiy &amp; Binyam<span>Insurance Brokers · Ethiopia</span></div>
-  </a>
-  <div class="nav-links">
-    <a href="index.html" class="active">Home</a>
-    <a href="products.html">Products</a>
-    <a href="services.html">Services</a>
-    <a href="about.html">About</a>
-    <a href="reviews.html">Reviews</a>
-    <a href="contact.html">Contact</a>
+<!-- FLOATING ACTIONS -->
+<div class="floating-actions">
+  <div class="float-wrap">
+    <button class="float-btn wa-float" onclick="alert('Opens: wa.me/251951444455')">
+      <span>📱</span>
+      <span class="float-label">WhatsApp Us</span>
+    </button>
   </div>
-  <div style="display:flex;align-items:center;gap:10px">
+  <div class="float-wrap">
+    <button class="float-btn tel-float" onclick="alert('Opens Telegram channel')">
+      <span>✈️</span>
+      <span class="float-label">Telegram</span>
+    </button>
+  </div>
+  <div class="float-wrap">
+    <button class="float-btn chat-float" onclick="alert('Opens AI Chat Assistant')">
+      <span>💬</span>
+      <span class="float-label">AI Assistant</span>
+    </button>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">
+    <div class="logo-mark">AB</div>
+    <div class="logo-text">
+      Abiy & Binyam
+      <span>Insurance Brokers · Ethiopia</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#">Products</a>
+    <a href="#">Claims</a>
+    <a href="#">About</a>
+    <a href="#">Blog</a>
+    <a href="#">Contact</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px">
     <div class="nav-lang">🌐 EN | አማርኛ</div>
-    <a href="contact.html"><button class="nav-cta">Get a Quote →</button></a>
+    <button class="nav-cta">Client Portal →</button>
   </div>
 </nav>
 
-<!-- FLOATING BUTTONS -->
-<div class="floating-actions">
-  <a href="https://wa.me/251951444455?text=Hello%2C%20I%20would%20like%20a%20free%20insurance%20quote." target="_blank">
-    <button class="float-btn wa-float" title="WhatsApp Us">📱</button>
-  </a>
-  <a href="https://t.me/abinsurancebrokers" target="_blank">
-    <button class="float-btn tel-float" title="Telegram">✈️</button>
-  </a>
-</div>
-
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg-pattern"></div>
 
-  <!-- LEFT -->
-  <div style="position:relative;z-index:1">
-    <div class="hero-eyebrow"><span class="dot-pulse"></span> #1 Insurance Broker in Ethiopia</div>
-    <h1>Protect What You've<br/><em>Built for Ethiopia</em></h1>
-    <p class="hero-sub">From construction sites to hotel chains — we connect Ethiopian businesses and individuals with the right insurance coverage. Licensed by NBE since 1996.</p>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      Ethiopia's Leading Insurance Broker
+    </div>
+    <h1>
+      Protect What You've<br/>
+      <em>Built for Ethiopia</em>
+    </h1>
+    <p class="hero-sub">
+      From construction sites to hotel chains — we connect Ethiopian businesses and individuals with the right insurance coverage, in minutes, not weeks.
+    </p>
     <div class="hero-actions">
-      <a href="contact.html"><button class="btn-primary">Get a Free Quote →</button></a>
-      <a href="tel:+251115527255"><button class="btn-outline">📞 +251-115-52-72-55</button></a>
+      <button class="btn-primary">Get an Instant Quote ↗</button>
+      <button class="btn-secondary">📞 Call Us Now</button>
     </div>
     <div class="hero-stats">
-      <div class="stat-item"><div class="num">30+</div><div class="lbl">Years Experience</div></div>
-      <div class="stat-item"><div class="num">200+</div><div class="lbl">Corporate Clients</div></div>
-      <div class="stat-item"><div class="num">4.9★</div><div class="lbl">Client Rating</div></div>
-      <div class="stat-item"><div class="num">22+</div><div class="lbl">Insurer Partners</div></div>
+      <div class="stat-item">
+        <div class="num">30+</div>
+        <div class="lbl">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">200+</div>
+        <div class="lbl">Corporate Clients</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">4.9★</div>
+        <div class="lbl">Client Rating</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">NBE ✓</div>
+        <div class="lbl">Licensed Broker</div>
+      </div>
     </div>
   </div>
 
-  <!-- RIGHT — Logo + Quick Contacts -->
-  <div class="hero-right">
-    <div class="hero-logo-wrap">
-      <div class="hero-logo-glow"></div>
-      <img src="logo.png" alt="Abiy and Binyam Insurance Brokers"/>
-    </div>
-    <div class="quick-contacts">
-      <a href="tel:+251115527255" class="qc-card">
-        <div class="qc-icon" style="background:rgba(201,148,58,0.12);border:1px solid rgba(201,148,58,0.2)">📞</div>
-        <div><div class="qc-label">Office</div><div class="qc-val">+251-115-52-72-55</div></div>
-      </a>
-      <a href="https://wa.me/251951444455" target="_blank" class="qc-card">
-        <div class="qc-icon" style="background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.2)">📱</div>
-        <div><div class="qc-label">WhatsApp</div><div class="qc-val">+251-951-44-44-55</div></div>
-      </a>
-      <a href="mailto:info@abinsurancebrokers.com" class="qc-card">
-        <div class="qc-icon" style="background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.2)">✉️</div>
-        <div><div class="qc-label">Email</div><div class="qc-val">info@abinsurancebrokers.com</div></div>
-      </a>
-      <a href="about.html" class="qc-card">
-        <div class="qc-icon" style="background:rgba(201,148,58,0.12);border:1px solid rgba(201,148,58,0.2)">🏦</div>
-        <div><div class="qc-label">NBE License</div><div class="qc-val">LB/006/95</div></div>
-      </a>
+  <div class="hero-card">
+    <div class="quote-card">
+      <h3>Get Your Free Quote</h3>
+      <p>Takes 2 minutes · No commitment required</p>
+
+      <div class="form-group">
+        <label class="form-label">Insurance Type</label>
+        <select class="form-select">
+          <option>🏢 Business Insurance</option>
+          <option>🚗 Motor / Auto Insurance</option>
+          <option>🏗️ Contractors All Risk (CAR)</option>
+          <option>🏠 Property Insurance</option>
+          <option>🛡️ Liability Insurance</option>
+          <option>👷 Workmen's Compensation</option>
+          <option>❤️ Life Insurance</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Business Name</label>
+          <input class="form-input" placeholder="Your company"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input class="form-input" placeholder="+251 9__"/>
+        </div>
+      </div>
+
+      <button class="submit-btn">Request Free Quote →</button>
+
+      <div class="divider">or reach us instantly</div>
+
+      <button class="wa-btn" onclick="alert('Opens WhatsApp with pre-filled message')">
+        <span>📱</span> Message us on WhatsApp
+      </button>
+
+      <div class="trust-row">
+        <span class="trust-badge">🔒 100% Confidential</span>
+        <span>·</span>
+        <span class="trust-badge">✓ NBE Licensed</span>
+        <span>·</span>
+        <span class="trust-badge">⚡ Same-day response</span>
+      </div>
     </div>
   </div>
 </section>
@@ -284,94 +768,248 @@
     <div class="trust-stat"><div class="n">30+</div><div class="l">Years in Ethiopian Market</div></div>
     <div class="trust-stat"><div class="n">200+</div><div class="l">Corporate Clients Served</div></div>
     <div class="trust-stat"><div class="n">60+</div><div class="l">Projects Insured</div></div>
-    <div class="trust-stat"><div class="n">22+</div><div class="l">Insurer Partnerships</div></div>
-    <div class="trust-stat"><div class="n">LB/006/95</div><div class="l">NBE License Number</div></div>
+    <div class="trust-stat"><div class="n">567</div><div class="l">Verified Client Reviews</div></div>
+    <div class="trust-stat"><div class="n">15+</div><div class="l">Insurer Partnerships</div></div>
   </div>
 </div>
 
 <!-- INSURANCE PRODUCTS -->
-<section style="background:var(--navy2)">
-  <div class="reveal" style="margin-bottom:48px">
+<section class="services">
+  <div class="section-header reveal">
     <div class="section-tag">Our Products</div>
     <h2 class="section-title">Coverage for Every Need</h2>
-    <p class="section-sub">40+ insurance products across life, general, engineering, and bond categories — sourced from 22+ Ethiopian insurers.</p>
+    <p class="section-sub">Comprehensive insurance solutions tailored to Ethiopian businesses and individuals.</p>
   </div>
   <div class="services-grid">
     <div class="service-card reveal">
-      <div class="svc-icon">🏢</div>
+      <div class="service-icon">🏢</div>
       <h3>Business Insurance</h3>
-      <p>Comprehensive protection for property, liability, and employee injuries. Keep your business running after unexpected events.</p>
-      <a href="products.html#general" class="svc-link">Learn More →</a>
+      <p>Complete protection for property, liability, and employee injuries. Keep your business running after unexpected events.</p>
+      <div class="service-link">Learn More →</div>
     </div>
     <div class="service-card reveal">
-      <div class="svc-icon">🚗</div>
+      <div class="service-icon">🚗</div>
       <h3>Motor Insurance</h3>
-      <p>Full coverage for vehicles and fleets against accidents, theft, and damage. Liability protection for private and commercial vehicles.</p>
-      <a href="products.html#general" class="svc-link">Learn More →</a>
+      <p>Full coverage for vehicles against accidents, theft, and damage. Liability protection for fleets and private vehicles.</p>
+      <div class="service-link">Learn More →</div>
     </div>
     <div class="service-card reveal">
-      <div class="svc-icon">🏗️</div>
-      <h3>Contractors All Risk (CAR)</h3>
-      <p>Comprehensive policy for construction and infrastructure projects. Covers contractors, employers, and subcontractors jointly.</p>
-      <a href="products.html#engineering" class="svc-link">Learn More →</a>
+      <div class="service-icon">🏗️</div>
+      <h3>Contractors All Risk</h3>
+      <p>Comprehensive coverage for construction and infrastructure projects. Covers contractors, employers, and subcontractors jointly.</p>
+      <div class="service-link">Learn More →</div>
     </div>
     <div class="service-card reveal">
-      <div class="svc-icon">🏠</div>
+      <div class="service-icon">🏠</div>
       <h3>Property Insurance</h3>
-      <p>Protects buildings and assets from fire, theft, and natural disasters. Residential and commercial coverage available.</p>
-      <a href="products.html#general" class="svc-link">Learn More →</a>
+      <p>Protect your buildings and assets from fire, theft, and natural disasters. Residential and commercial coverage available.</p>
+      <div class="service-link">Learn More →</div>
     </div>
     <div class="service-card reveal">
-      <div class="svc-icon">🛡️</div>
+      <div class="service-icon">🛡️</div>
       <h3>Liability Insurance</h3>
       <p>Shield your business from costly lawsuits and legal settlements arising from accidents or negligence claims.</p>
-      <a href="products.html#general" class="svc-link">Learn More →</a>
+      <div class="service-link">Learn More →</div>
     </div>
     <div class="service-card reveal">
-      <div class="svc-icon">👷</div>
+      <div class="service-icon">👷</div>
       <h3>Workmen's Compensation</h3>
       <p>Protect your workforce and business with coverage for work-related injuries, medical costs, and lost wages.</p>
-      <a href="products.html#life" class="svc-link">Learn More →</a>
+      <div class="service-link">Learn More →</div>
     </div>
-  </div>
-  <div style="text-align:center;margin-top:36px" class="reveal">
-    <a href="products.html"><button class="btn-outline">View All 40+ Products →</button></a>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
-<section>
-  <div class="reveal" style="text-align:center;margin-bottom:60px">
+<section class="process">
+  <div class="section-header reveal" style="text-align:center;margin:0 auto 64px">
     <div class="section-tag">How It Works</div>
     <h2 class="section-title">Coverage in 4 Simple Steps</h2>
-    <p style="color:var(--muted);font-size:14px;max-width:480px;margin:0 auto">From first contact to active policy — fast, transparent, and free of service fees.</p>
+    <p class="section-sub" style="margin:0 auto">From first contact to active policy — we make insurance fast and simple.</p>
   </div>
   <div class="process-steps">
-    <div class="step reveal"><div class="step-num">01</div><h4>Submit Your Request</h4><p>Fill the online quote form or message us on WhatsApp. Takes under 2 minutes.</p></div>
-    <div class="step reveal"><div class="step-num">02</div><h4>Expert Consultation</h4><p>Our licensed brokers compare options from 22+ Ethiopian insurers on your behalf.</p></div>
-    <div class="step reveal"><div class="step-num">03</div><h4>Receive Your Policy</h4><p>Get your tailored policy documents within 24–48 hours.</p></div>
-    <div class="step reveal"><div class="step-num">04</div><h4>Ongoing Support</h4><p>Dedicated claims team and continuous advisory support for the life of your policy.</p></div>
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <h4>Submit Your Request</h4>
+      <p>Fill the online quote form or message us on WhatsApp. Takes under 2 minutes.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">02</div>
+      <h4>Expert Consultation</h4>
+      <p>Our licensed brokers analyze your needs and compare options from 15+ insurers.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">03</div>
+      <h4>Receive Your Policy</h4>
+      <p>Get your tailored policy documents digitally within 24–48 hours.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">04</div>
+      <h4>Ongoing Support</h4>
+      <p>Track claims, renewals, and documents in your personal client portal — 24/7.</p>
+    </div>
   </div>
 </section>
 
 <!-- WHY ABIB -->
 <section style="background:var(--navy2)">
-  <div class="reveal" style="margin-bottom:48px">
+  <div class="section-header reveal">
     <div class="section-tag">Why Choose Us</div>
     <h2 class="section-title">What Sets ABIB Apart</h2>
   </div>
   <div class="why-grid">
-    <div class="why-card reveal"><div class="why-num">01</div><h3>NBE Licensed &amp; Regulated</h3><p>Fully licensed by the National Bank of Ethiopia (LB/006/95). Your protection is legally guaranteed and professionally managed.</p></div>
-    <div class="why-card reveal"><div class="why-num">02</div><h3>30 Years of Local Expertise</h3><p>Deep knowledge of Ethiopian market conditions, regulations, and insurer relationships built since 1996.</p></div>
-    <div class="why-card reveal"><div class="why-num">03</div><h3>Zero Service Fees to Clients</h3><p>We charge no fees to you — our commission is paid by the selected insurance company. Expert advice at zero cost.</p></div>
-    <div class="why-card reveal"><div class="why-num">04</div><h3>Independent — On Your Side</h3><p>We work for you, not insurers. We compare across 22+ companies to find the best rate and coverage for your needs.</p></div>
+    <div class="why-card reveal">
+      <div class="why-num">01</div>
+      <h3>NBE Licensed & Regulated</h3>
+      <p>Fully licensed by the National Bank of Ethiopia. Your protection is legally guaranteed.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-num">02</div>
+      <h3>30 Years of Local Expertise</h3>
+      <p>Deep knowledge of Ethiopian market conditions, regulations, and insurer relationships built over three decades.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-num">03</div>
+      <h3>AI-Powered Claims Support</h3>
+      <p>Our 24/7 AI assistant in Amharic and English guides you through every step of a claim instantly.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-num">04</div>
+      <h3>Independent Broker — Your Side</h3>
+      <p>We work for you, not insurers. We compare across 15+ companies to find the best rate and coverage.</p>
+    </div>
   </div>
 </section>
 
-<!-- CLIENT LOGOS -->
-<section style="background:var(--navy);padding:56px 0">
-  <div style="text-align:center;margin-bottom:28px" class="reveal">
-    <div class="section-tag">Trusted By 200+ Companies</div>
+<!-- CLIENT PORTAL PREVIEW -->
+<section class="portal-section">
+  <div class="portal-inner">
+    <div class="reveal">
+      <div class="section-tag">Digital Platform</div>
+      <h2 class="section-title">Your Policies,<br/>At Your Fingertips</h2>
+      <p style="color:var(--muted);font-size:14px;margin:20px 0 28px;line-height:1.7">Log in to the ABIB Client Portal to view all your active policies, track open claims in real time, download insurance certificates, and get notified before renewals — from any device.</p>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(250,246,238,.7)">
+          <span style="color:var(--gold);font-size:16px">✓</span> View all active policies in one place
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(250,246,238,.7)">
+          <span style="color:var(--gold);font-size:16px">✓</span> Real-time claim status tracking
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(250,246,238,.7)">
+          <span style="color:var(--gold);font-size:16px">✓</span> Download policy documents anytime
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(250,246,238,.7)">
+          <span style="color:var(--gold);font-size:16px">✓</span> Renewal reminders via SMS & email
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(250,246,238,.7)">
+          <span style="color:var(--gold);font-size:16px">✓</span> Upload claim documents online
+        </div>
+      </div>
+      <button class="btn-primary" style="margin-top:32px">Access Client Portal →</button>
+    </div>
+    <div class="reveal">
+      <div class="portal-preview">
+        <div class="portal-tabs">
+          <div class="p-tab active">My Policies</div>
+          <div class="p-tab">Claims</div>
+          <div class="p-tab">Documents</div>
+          <div class="p-tab">Renewals</div>
+        </div>
+        <div class="portal-body">
+          <div class="policy-item">
+            <div>
+              <div class="pi-title">Business Insurance</div>
+              <div class="pi-sub">Policy #BI-2026-4421</div>
+              <div class="pi-sub" style="margin-top:4px">Expires: Dec 2026</div>
+            </div>
+            <span class="policy-badge">Active</span>
+          </div>
+          <div class="policy-item">
+            <div>
+              <div class="pi-title">Fleet Motor (12 Vehicles)</div>
+              <div class="pi-sub">Policy #FM-2026-1188</div>
+              <div class="pi-sub" style="margin-top:4px">Expires: Aug 2026</div>
+            </div>
+            <span class="policy-badge exp">Renew Soon</span>
+          </div>
+          <div class="policy-item">
+            <div>
+              <div class="pi-title">CAR — Phase II</div>
+              <div class="pi-sub">Policy #CAR-2026-890</div>
+              <div class="pi-sub" style="margin-top:4px">Expires: Mar 2027</div>
+            </div>
+            <span class="policy-badge">Active</span>
+          </div>
+          <div class="policy-item">
+            <div>
+              <div class="pi-title">Workmen's Compensation</div>
+              <div class="pi-sub">Policy #WC-2026-334</div>
+              <div class="pi-sub" style="margin-top:4px">Expires: Nov 2026</div>
+            </div>
+            <span class="policy-badge">Active</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI CHAT PREVIEW -->
+<section class="ai-section">
+  <div class="ai-inner">
+    <div class="reveal">
+      <div class="section-tag">AI Assistant</div>
+      <h2 class="section-title">24/7 Support<br/>In Amharic & English</h2>
+      <p style="color:var(--muted);font-size:14px;margin:20px 0 28px;line-height:1.7">Our AI assistant is trained on Ethiopian insurance regulations, ABIB's products, and claims procedures. Get instant answers at midnight or during a busy workday — no waiting on hold.</p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
+        <div style="font-size:13px;color:var(--muted)">💬 "How do I file a motor insurance claim?"</div>
+        <div style="font-size:13px;color:var(--muted)">💬 "What documents do I need for CAR insurance?"</div>
+        <div style="font-size:13px;color:var(--muted)">💬 "ለ ቢዝነስ ኢንሹራንስ ምን ያስፈልጋል?"</div>
+        <div style="font-size:13px;color:var(--muted)">💬 "When does my motor policy expire?"</div>
+      </div>
+      <button class="btn-primary">Try the AI Assistant →</button>
+    </div>
+    <div class="reveal">
+      <div class="ai-chat">
+        <div class="chat-header">
+          <div class="chat-avatar">🤖</div>
+          <div class="chat-info">
+            <div class="name">ABIB Assistant</div>
+            <div class="status">Online — Responds instantly</div>
+          </div>
+        </div>
+        <div class="chat-body">
+          <div class="msg bot">Hello! Welcome to Abiy & Binyam Insurance. How can I help you today? I speak English and አማርኛ. 😊</div>
+          <div class="msg user">How do I file a claim for my motor insurance?</div>
+          <div class="msg bot">
+            Great question! To file a motor insurance claim:
+            <br/><br/>
+            1. Call our claims line: <strong>+251-115-52-72-55</strong><br/>
+            2. Document the incident (photos + police report)<br/>
+            3. Upload documents via your client portal<br/>
+            4. Track status in real-time
+            <br/><br/>
+            Would you like me to start the claim form for you? 📋
+          </div>
+          <div class="msg bot typing">
+            <span class="dot-typing"></span>
+            <span class="dot-typing"></span>
+            <span class="dot-typing"></span>
+          </div>
+        </div>
+        <div class="chat-input-row">
+          <input class="chat-input" placeholder="Type your question in English or አማርኛ..."/>
+          <button class="chat-send">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER CLIENTS SCROLL -->
+<section class="partners" style="padding:60px 0">
+  <div style="text-align:center;margin-bottom:32px">
+    <div class="section-tag" style="margin:0 auto 0">Trusted By 200+ Companies</div>
   </div>
   <div class="partner-scroll">
     <div class="partner-track">
@@ -387,13 +1025,7 @@
       <div class="partner-logo">🎓 Cambridge Academy Ethiopia</div>
       <div class="partner-logo">🌿 Gifti Foods</div>
       <div class="partner-logo">💧 Kiya Water</div>
-      <div class="partner-logo">🏥 ICMC General Hospital</div>
-      <div class="partner-logo">🥩 Prime Meat Ethiopia</div>
-      <div class="partner-logo">🚛 Akakas Logistics</div>
-      <div class="partner-logo">🏢 Jarra Holdings SC</div>
-      <div class="partner-logo">🌿 Amaga Products</div>
-      <div class="partner-logo">🏗️ NKH Construction PLC</div>
-      <!-- duplicate -->
+      <!-- Duplicate for infinite scroll -->
       <div class="partner-logo">🏥 Arsho Medical Lab</div>
       <div class="partner-logo">🌍 Soreti International</div>
       <div class="partner-logo">🌊 Nile Source PLC</div>
@@ -406,66 +1038,66 @@
       <div class="partner-logo">🎓 Cambridge Academy Ethiopia</div>
       <div class="partner-logo">🌿 Gifti Foods</div>
       <div class="partner-logo">💧 Kiya Water</div>
-      <div class="partner-logo">🏥 ICMC General Hospital</div>
-      <div class="partner-logo">🥩 Prime Meat Ethiopia</div>
-      <div class="partner-logo">🚛 Akakas Logistics</div>
-      <div class="partner-logo">🏢 Jarra Holdings SC</div>
-      <div class="partner-logo">🌿 Amaga Products</div>
-      <div class="partner-logo">🏗️ NKH Construction PLC</div>
     </div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section>
-  <div class="reveal" style="text-align:center;margin-bottom:44px">
+<section class="testimonials">
+  <div class="section-header reveal" style="text-align:center;margin-bottom:48px">
     <div class="section-tag">Client Reviews</div>
     <h2 class="section-title">What Our Clients Say</h2>
   </div>
   <div class="test-grid">
     <div class="test-card reveal">
-      <div class="qmark">"</div>
-      <p class="test-text">The firm has demonstrated remarkable professionalism, transparency, and dedication. Their technical expertise and client-focused approach make them a trusted partner in insurance matters. We are pleased to recommend their services.</p>
+      <div class="quote-mark">"</div>
+      <p class="test-text">The claims team handled our factory fire incident with incredible speed and professionalism. We received our settlement within 10 days. Highly recommend ABIB to any Ethiopian business.</p>
       <div class="test-author">
-        <div class="test-avatar">RT</div>
-        <div><div class="test-name">Rahel Terefe, CEO</div><div class="test-role">ICMC General Hospital</div><div class="stars">★★★★★</div></div>
+        <div class="test-avatar">GM</div>
+        <div>
+          <div class="test-name">Girma Mulatu</div>
+          <div class="test-role">CEO, Manufacturing Company</div>
+          <div class="stars">★★★★★</div>
+        </div>
       </div>
     </div>
     <div class="test-card reveal">
-      <div class="qmark">"</div>
-      <p class="test-text">ABIB has managed insurance for Prime Meat's properties for the past 17 years. They are very skilled in finding the best insurance companies and negotiating the best terms. I cannot recommend them enough!</p>
+      <div class="quote-mark">"</div>
+      <p class="test-text">As a logistics company with a large fleet, ABIB found us a package that saved 23% vs our previous insurer while improving coverage. The client portal makes renewal tracking effortless.</p>
       <div class="test-author">
-        <div class="test-avatar">KA</div>
-        <div><div class="test-name">Dr Kassahun Abberu</div><div class="test-role">Owner — Prime Meat &amp; Food Products</div><div class="stars">★★★★★</div></div>
+        <div class="test-avatar">BJ</div>
+        <div>
+          <div class="test-name">Brian Johnson</div>
+          <div class="test-role">Operations Director, AKIDA PLC</div>
+          <div class="stars">★★★★★</div>
+        </div>
       </div>
     </div>
     <div class="test-card reveal">
-      <div class="qmark">"</div>
-      <p class="test-text">We have worked with ABIB for over 15 years and found them to be highly professional and reliable risk management partners with a strong sense of integrity. We confidently recommend them to any organization.</p>
+      <div class="quote-mark">"</div>
+      <p class="test-text">For our construction projects across Ethiopia, CAR insurance is critical. ABIB's expertise in contractor policies is unmatched. They understood our project scope immediately.</p>
       <div class="test-author">
-        <div class="test-avatar">AG</div>
-        <div><div class="test-name">Akalu Geleta, CEO</div><div class="test-role">Akakas Logistics Plc</div><div class="stars">★★★★★</div></div>
+        <div class="test-avatar">AT</div>
+        <div>
+          <div class="test-name">Ayele Tesfaye</div>
+          <div class="test-role">MD, NKH Construction PLC</div>
+          <div class="stars">★★★★★</div>
+        </div>
       </div>
     </div>
-  </div>
-  <div style="text-align:center;margin-top:28px" class="reveal">
-    <a href="reviews.html"><button class="btn-outline">Read All Reviews →</button></a>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta-section">
-  <div style="position:relative;z-index:1">
-    <div class="section-tag" style="margin:0 auto 16px">Ready to Get Protected?</div>
-    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.2;margin-bottom:16px">
-      Protect Your Business Today.<br/><em style="font-style:normal;background:linear-gradient(135deg,var(--gold),#f5d38a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Free Quote in 2 Minutes.</em>
-    </h2>
-    <p style="color:rgba(250,246,238,.5);font-size:1rem;max-width:460px;margin:0 auto 36px;font-weight:300">Our licensed brokers respond same-day. No fees. No obligation. Just expert advice from Ethiopia's most trusted broker.</p>
-    <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap">
-      <a href="contact.html"><button class="btn-primary">Get a Free Quote →</button></a>
-      <a href="https://wa.me/251951444455" target="_blank"><button class="whatsapp-cta">📱 WhatsApp: +251-951-44-44-55</button></a>
-    </div>
-    <div style="margin-top:24px;font-size:13px;color:var(--muted)">NBE Licensed · Reg No. LB/006/95 · Since 1996 · English &amp; አማርኛ</div>
+  <h2>Ready to Protect Your Business?</h2>
+  <p>Get a free quote in 2 minutes. Our licensed brokers respond same-day.</p>
+  <div class="cta-actions">
+    <button class="btn-primary">Get a Free Quote →</button>
+    <button class="whatsapp-cta">📱 WhatsApp: +251-951-44-44-55</button>
+  </div>
+  <div style="margin-top:32px;font-size:13px;color:var(--muted)">
+    NBE Licensed · 30+ Years Experience · 200+ Corporate Clients · English & አማርኛ
   </div>
 </section>
 
@@ -473,65 +1105,122 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
-        <img src="logo.png" alt="ABIB Logo" style="width:48px;height:48px;border-radius:10px;object-fit:cover"/>
-        <div class="logo-text">Abiy &amp; Binyam<span>Insurance Brokers</span></div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+        <div class="logo-mark">AB</div>
+        <div class="logo-text">Abiy & Binyam<span>Insurance Brokers</span></div>
       </div>
-      <p>Ethiopia's trusted insurance brokerage since 1996. Connecting businesses and individuals with the right coverage. Licensed &amp; regulated by the National Bank of Ethiopia.</p>
+      <p>Ethiopia's trusted insurance brokerage. Connecting businesses and individuals with the right coverage since 1994.</p>
       <div class="social-links">
         <div class="social-btn">𝕏</div>
         <div class="social-btn">in</div>
         <div class="social-btn">f</div>
         <div class="social-btn">📷</div>
+        <div class="social-btn">✈️</div>
       </div>
     </div>
     <div class="footer-col">
       <h4>Products</h4>
       <ul>
-        <li><a href="products.html#life">Life &amp; Health</a></li>
-        <li><a href="products.html#general">General Insurance</a></li>
-        <li><a href="products.html#engineering">Engineering</a></li>
-        <li><a href="products.html#bonds">Insurance Bonds</a></li>
+        <li><a href="#">Business Insurance</a></li>
+        <li><a href="#">Motor Insurance</a></li>
+        <li><a href="#">CAR Insurance</a></li>
+        <li><a href="#">Property Insurance</a></li>
+        <li><a href="#">Liability Insurance</a></li>
+        <li><a href="#">Life Insurance</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Company</h4>
+      <h4>Services</h4>
       <ul>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="services.html">Our Services</a></li>
-        <li><a href="reviews.html">Client Reviews</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#">Get a Quote</a></li>
+        <li><a href="#">File a Claim</a></li>
+        <li><a href="#">Client Portal</a></li>
+        <li><a href="#">Policy Renewal</a></li>
+        <li><a href="#">Risk Assessment</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
       <ul>
-        <li><a href="#">📍 Kirkos, CETU Bldg 2F, Addis Ababa</a></li>
-        <li><a href="tel:+251115527255">📞 +251-115-52-72-55</a></li>
-        <li><a href="tel:+251951444455">📱 +251-951-44-44-55</a></li>
-        <li><a href="mailto:info@abinsurancebrokers.com">✉️ info@abinsurancebrokers.com</a></li>
-        <li><a href="https://wa.me/251951444455">📲 WhatsApp Us</a></li>
+        <li><a href="#">📍 Kirkos, CETU Bldg 2F</a></li>
+        <li><a href="#">📞 +251-115-52-72-55</a></li>
+        <li><a href="#">📱 +251-951-44-44-55</a></li>
+        <li><a href="#">✉️ info@abinsurancebrokers.com</a></li>
+        <li><a href="#">📱 WhatsApp Us</a></li>
+        <li><a href="#">✈️ Telegram Channel</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Abiy &amp; Binyam Insurance Brokers. All rights reserved.</span>
-    <div class="nbe-badge">🏦 NBE Licensed · Reg No. LB/006/95</div>
-    <div style="display:flex;gap:16px">
+    <span>© 2026 Abiy & Binyam Insurance Brokers. All rights reserved.</span>
+    <div class="nbe-badge">🏦 NBE Licensed · Reg No. XXXX-YYYY</div>
+    <div style="display:flex;gap:20px">
       <a href="#" style="color:var(--muted)">Privacy Policy</a>
       <a href="#" style="color:var(--muted)">Terms of Use</a>
+      <a href="#" style="color:var(--muted)">Cookie Policy</a>
     </div>
   </div>
 </footer>
 
 <script>
-const obs = new IntersectionObserver(e => e.forEach(el => {
-  if (el.isIntersecting) { el.target.classList.add('visible'); obs.unobserve(el.target); }
-}), {threshold: .1});
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-window.addEventListener('scroll', () => {
-  document.querySelector('nav').style.boxShadow = window.scrollY > 40 ? '0 4px 32px rgba(0,0,0,.5)' : 'none';
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.12});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Animate stats counter
+function animateCounter(el, target, suffix='') {
+  let current = 0;
+  const step = Math.ceil(target / 60);
+  const timer = setInterval(() => {
+    current = Math.min(current + step, target);
+    el.textContent = current + suffix;
+    if (current >= target) clearInterval(timer);
+  }, 30);
+}
+
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const nums = e.target.querySelectorAll('.n');
+      const targets = [30, 200, 60, 567, 15];
+      const suffixes = ['+', '+', '+', '', '+'];
+      nums.forEach((n, i) => animateCounter(n, targets[i], suffixes[i]));
+      statsObserver.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.3});
+const trustBar = document.querySelector('.trust-bar-inner');
+if (trustBar) statsObserver.observe(trustBar);
+
+// Portal tabs
+document.querySelectorAll('.p-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.p-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+  });
 });
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.boxShadow = window.scrollY > 40 ? '0 4px 32px rgba(0,0,0,0.5)' : 'none';
+});
+
+// Chat typing animation restart
+setInterval(() => {
+  const typing = document.querySelector('.msg.typing');
+  if (typing) {
+    typing.style.display = 'none';
+    setTimeout(() => typing.style.display = 'flex', 2000);
+  }
+}, 4000);
 </script>
 </body>
 </html>
