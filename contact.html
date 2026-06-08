@@ -1,4 +1,8 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Contact — Abiy &amp; Binyam Insurance Brokers</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="shared.css"/>
@@ -15,26 +19,29 @@
 .tc-card:hover{border-color:var(--border)}
 .tc-name{font-size:13px;font-weight:700;margin-bottom:3px}
 .tc-role{font-size:11px;color:var(--gold);margin-bottom:6px;font-weight:600}
-.tc-phone{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.tc-phone{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;text-decoration:none}
 .form-wrap{background:var(--navy3);border:1px solid var(--border);border-radius:16px;padding:36px}
 .form-label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;display:block}
-.form-input,.form-textarea,.form-select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border2);border-radius:8px;padding:11px 14px;color:var(--cream);font-family:'Outfit',sans-serif;font-size:14px;outline:none;transition:border-color .2s;margin-bottom:16px;appearance:none}
-.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--gold);background:rgba(201,148,58,0.04)}
+.form-input,.form-textarea,.form-select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border2);border-radius:8px;padding:11px 14px;color:var(--cream);font-family:"Outfit",sans-serif;font-size:14px;outline:none;transition:border-color .2s;margin-bottom:16px;appearance:none}
+.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--gold)}
 .form-textarea{resize:vertical;min-height:110px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.wa-cta{width:100%;background:linear-gradient(135deg,#22c55e,#16a34a);border:none;border-radius:8px;padding:13px;color:#fff;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;margin-top:4px}
+.wa-cta{width:100%;background:linear-gradient(135deg,#22c55e,#16a34a);border:none;border-radius:8px;padding:13px;color:#fff;font-family:"Outfit",sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s}
 .wa-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(34,197,94,.3)}
 .divider{display:flex;align-items:center;gap:10px;margin:14px 0;font-size:12px;color:var(--muted)}
-.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border2)}
-.map-embed{width:100%;height:280px;border-radius:12px;overflow:hidden;border:1px solid var(--border);margin-top:24px}
-</style>
-</head><body>
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--border2)}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}.team-contact{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.team-contact{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}</style>
+</head>
+<body>
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-logo">
-    <div class="logo-mark">AB</div>
+  <a href="index.html" class="nav-logo" style="text-decoration:none;color:inherit">
+    <img src="logo.png" alt="ABIB Logo" style="width:65px;height:65px;border-radius:10px;object-fit:cover;flex-shrink:0"/>
     <div class="logo-text">Abiy &amp; Binyam<span>Insurance Brokers · Ethiopia</span></div>
   </a>
+
+  <!-- Desktop links -->
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="products.html">Products</a>
@@ -43,32 +50,137 @@
     <a href="reviews.html">Reviews</a>
     <a href="contact.html">Contact</a>
   </div>
-  <div style="display:flex;align-items:center;gap:10px">
+
+  <!-- Desktop right actions -->
+  <div class="nav-actions">
     <div class="nav-lang">🌐 EN | አማርኛ</div>
     <a href="contact.html"><button class="nav-cta">Get a Quote →</button></a>
+    <!-- Burger (visible on mobile) -->
+    <button class="burger" id="burgerBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<!-- FLOATING -->
-<div class="floating-actions">
-  <a href="https://wa.me/251951444455" target="_blank"><button class="float-btn wa-float" title="WhatsApp">📱</button></a>
-  <a href="https://t.me/abinsurancebrokers" target="_blank"><button class="float-btn tel-float" title="Telegram">✈️</button></a>
+<!-- Mobile drawer -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">🏠 Home</a>
+  <a href="products.html">📋 Products</a>
+  <a href="services.html">⚙️ Services</a>
+  <a href="about.html">👥 About</a>
+  <a href="reviews.html">⭐ Reviews</a>
+  <a href="contact.html">📍 Contact</a>
+  <div class="mob-divider"></div>
+  <a href="contact.html" class="mob-cta">Get a Free Quote →</a>
+  <a href="https://wa.me/251951444455" target="_blank" class="mob-wa">📱 WhatsApp: +251-951-44-44-55</a>
+  <div class="mob-lang">🌐 EN | አማርኛ</div>
 </div>
+
+<!-- FLOATING BUTTONS -->
+<div class="floating-actions">
+  <a href="https://wa.me/251951444455?text=Hello%2C%20I%20would%20like%20a%20free%20insurance%20quote." target="_blank">
+    <button class="float-btn wa-float" title="WhatsApp Us">📱</button>
+  </a>
+  <a href="https://t.me/abinsurancebrokers" target="_blank">
+    <button class="float-btn tel-float" title="Telegram">✈️</button>
+  </a>
+</div>
+
+<script>
+const burger = document.getElementById("burgerBtn");
+const menu   = document.getElementById("mobileMenu");
+
+function closeMenu() {
+  burger.classList.remove("open");
+  menu.classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+burger.addEventListener("click", () => {
+  burger.classList.toggle("open");
+  menu.classList.toggle("open");
+  document.body.style.overflow = menu.classList.contains("open") ? "hidden" : "";
+});
+
+menu.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 900) closeMenu();
+});
+
+const page = window.location.pathname.split("/").pop() || "index.html";
+document.querySelectorAll(".nav-links a, .mobile-menu a").forEach(a => {
+  if (a.getAttribute("href") === page) a.classList.add("active");
+});
+
+window.addEventListener("scroll", () => {
+  document.querySelector("nav").style.boxShadow = window.scrollY > 40 ? "0 4px 32px rgba(0,0,0,.6)" : "none";
+});
+</script>
+<div class="page-hero">
+  <div class="page-hero-tag">Get In Touch</div>
+  <h1>We'd Love to <em>Hear From You</em></h1>
+  <p>We're here to answer your questions, provide a free quote, and guide you to the right coverage. Reach us any way you prefer.</p>
+</div>
+<section>
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="section-tag">Office &amp; Contact</div>
+      <h2 class="section-title" style="margin-bottom:28px">Our Details</h2>
+      <div class="info-block"><div class="info-icon">📍</div><div><div class="info-label">Office Location</div><div class="info-val">Kirkos Sub City, Woreda 09</div><div class="info-sub">CETU Building 2nd Floor, In front of HYATT REGENCY HOTEL, Addis Ababa, Ethiopia</div></div></div>
+      <div class="info-block"><div class="info-icon">📞</div><div><div class="info-label">Office Phone</div><a href="tel:+251115527255"><div class="info-val">+251-115-52-72-55</div></a><div class="info-sub">Monday – Friday, 8:30 AM – 5:30 PM EAT</div></div></div>
+      <div class="info-block"><div class="info-icon">📱</div><div><div class="info-label">Mobile / WhatsApp</div><a href="tel:+251951444455"><div class="info-val">+251-951-44-44-55</div></a><div class="info-sub"><a href="https://wa.me/251951444455" style="color:var(--gold)">Click to WhatsApp us →</a></div></div></div>
+      <div class="info-block"><div class="info-icon">✉️</div><div><div class="info-label">Email</div><a href="mailto:info@abinsurancebrokers.com"><div class="info-val">info@abinsurancebrokers.com</div></a><a href="mailto:abinsurancebro@gmail.com"><div class="info-sub">abinsurancebro@gmail.com</div></a></div></div>
+      <div style="margin-top:28px">
+        <div style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px">Direct Team Contacts</div>
+        <div class="team-contact">
+          <div class="tc-card"><div class="tc-name">Binyam Terfa</div><div class="tc-role">CEO</div><a href="tel:+251911209333" class="tc-phone">📞 +251-911-20-93-33</a></div>
+          <div class="tc-card"><div class="tc-name">Widad Abdulrashid</div><div class="tc-role">Office Manager &amp; EA</div><a href="tel:+251911862565" class="tc-phone">📞 +251-911-86-25-65</a></div>
+          <div class="tc-card"><div class="tc-name">Amanuel Abdissa</div><div class="tc-role">Head Underwriting</div><a href="tel:+251951444455" class="tc-phone">📞 +251-951-44-44-55</a></div>
+          <div class="tc-card"><div class="tc-name">Daniel Kebede</div><div class="tc-role">Senior Claims Officer</div><a href="tel:+251929902891" class="tc-phone">📞 +251-929-90-28-91</a></div>
+          <div class="tc-card"><div class="tc-name">Kidist Kassa</div><div class="tc-role">Senior Finance Officer</div><a href="tel:+251938599575" class="tc-phone">📞 +251-938-59-95-75</a></div>
+          <div class="tc-card"><div class="tc-name">Yoseph T/Mariam</div><div class="tc-role">Claims Officer</div><a href="tel:+251961050366" class="tc-phone">📞 +251-961-05-03-66</a></div>
+        </div>
+      </div>
+      <div style="margin-top:24px;border-radius:12px;overflow:hidden;border:1px solid var(--border)">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.5!2d38.7578!3d9.0182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDEnMDUuNSJOIDM4wrA0NScyOC4xIkU!5e0!3m2!1sen!2set!4v1" width="100%" height="260" style="border:0;display:block" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="form-wrap reveal">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:6px">Send Us a Message</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:24px">Fill the form and we'll respond within one business day.</p>
+      <div class="form-row">
+        <div><label class="form-label">First Name</label><input class="form-input" placeholder="Abebe"/></div>
+        <div><label class="form-label">Last Name</label><input class="form-input" placeholder="Kebede"/></div>
+      </div>
+      <label class="form-label">Company / Organization</label><input class="form-input" placeholder="Your company name (optional)"/>
+      <label class="form-label">Phone Number</label><input class="form-input" placeholder="+251 9__ __ __ __"/>
+      <label class="form-label">Email Address</label><input class="form-input" placeholder="you@company.com"/>
+      <label class="form-label">Insurance Type Needed</label>
+      <select class="form-select"><option value="">— Select insurance type —</option><option>Business Insurance</option><option>Motor / Vehicle Insurance</option><option>Contractors All Risk (CAR)</option><option>Property Insurance</option><option>Liability Insurance</option><option>Life / Health Insurance</option><option>Workmen's Compensation</option><option>Engineering Insurance</option><option>Insurance Bond</option><option>Not sure — need advice</option></select>
+      <label class="form-label">Your Message</label>
+      <textarea class="form-textarea" placeholder="Tell us about your business and what you need to insure..."></textarea>
+      <button class="btn-primary" style="width:100%;justify-content:center;margin-bottom:12px" onclick="alert('Thank you! We will contact you within one business day.')">Send Message →</button>
+      <div class="divider">or reach us instantly on</div>
+      <a href="https://wa.me/251951444455?text=Hello%2C%20I%20would%20like%20a%20free%20insurance%20quote." target="_blank"><button class="wa-cta">📱 WhatsApp: +251-951-44-44-55</button></a>
+      <div style="text-align:center;font-size:11px;color:var(--muted);margin-top:16px">🔒 100% Confidential · NBE Licensed · No service fees</div>
+    </div>
+  </div>
+</section>
+
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
-        <div class="logo-mark">AB</div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+        <img src="logo.png" alt="ABIB Logo" style="width:48px;height:48px;border-radius:10px;object-fit:cover"/>
         <div class="logo-text">Abiy &amp; Binyam<span>Insurance Brokers</span></div>
       </div>
-      <p>Ethiopia's trusted insurance brokerage. Connecting businesses and individuals with the right coverage since 1994. Licensed &amp; regulated by the National Bank of Ethiopia.</p>
+      <p>Ethiopia's trusted insurance brokerage since 1996. Connecting businesses and individuals with the right coverage. Licensed &amp; regulated by the National Bank of Ethiopia.</p>
       <div class="social-links">
-        <div class="social-btn">𝕏</div>
-        <div class="social-btn">in</div>
-        <div class="social-btn">f</div>
-        <div class="social-btn">📷</div>
+        <div class="social-btn">𝕏</div><div class="social-btn">in</div>
+        <div class="social-btn">f</div><div class="social-btn">📷</div>
       </div>
     </div>
     <div class="footer-col">
@@ -103,148 +215,17 @@
   <div class="footer-bottom">
     <span>© 2026 Abiy &amp; Binyam Insurance Brokers. All rights reserved.</span>
     <div class="nbe-badge">🏦 NBE Licensed · Reg No. LB/006/95</div>
-    <div style="display:flex;gap:16px"><a href="#" style="color:var(--muted)">Privacy Policy</a><a href="#" style="color:var(--muted)">Terms of Use</a></div>
+    <div style="display:flex;gap:16px">
+      <a href="#" style="color:var(--muted)">Privacy Policy</a>
+      <a href="#" style="color:var(--muted)">Terms of Use</a>
+    </div>
   </div>
 </footer>
 <script>
-const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}}),{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-const p=window.location.pathname.split('/').pop();
-document.querySelectorAll('.nav-links a').forEach(a=>{if(a.getAttribute('href')===p)a.classList.add('active')});
-window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxShadow=window.scrollY>40?'0 4px 32px rgba(0,0,0,.5)':'none'});
+const obs = new IntersectionObserver(e => e.forEach(el => {
+  if (el.isIntersecting) { el.target.classList.add('visible'); obs.unobserve(el.target); }
+}), { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
-<div class="page-hero">
-  <div class="page-hero-tag">Get In Touch</div>
-  <h1>We'd Love to <em>Hear From You</em></h1>
-  <p>We're here to answer your questions, provide a free quote, and guide you to the right coverage. Reach us any way you prefer.</p>
-</div>
-
-<section>
-  <div class="contact-grid">
-    <div class="reveal">
-      <div class="section-tag">Office &amp; Contact</div>
-      <h2 class="section-title" style="margin-bottom:28px">Our Details</h2>
-
-      <div class="info-block">
-        <div class="info-icon">📍</div>
-        <div>
-          <div class="info-label">Office Location</div>
-          <div class="info-val">Kirkos Sub City, Woreda 09</div>
-          <div class="info-sub">CETU Building 2nd Floor, In front of HYATT REGENCY HOTEL, Addis Ababa, Ethiopia</div>
-        </div>
-      </div>
-      <div class="info-block">
-        <div class="info-icon">📞</div>
-        <div>
-          <div class="info-label">Office Phone</div>
-          <a href="tel:+251115527255"><div class="info-val">+251-115-52-72-55</div></a>
-          <div class="info-sub">Monday – Friday, 8:30 AM – 5:30 PM EAT</div>
-        </div>
-      </div>
-      <div class="info-block">
-        <div class="info-icon">📱</div>
-        <div>
-          <div class="info-label">Mobile / WhatsApp</div>
-          <a href="tel:+251951444455"><div class="info-val">+251-951-44-44-55</div></a>
-          <div class="info-sub"><a href="https://wa.me/251951444455" style="color:var(--gold)">Click to WhatsApp us →</a></div>
-        </div>
-      </div>
-      <div class="info-block">
-        <div class="info-icon">✉️</div>
-        <div>
-          <div class="info-label">Email</div>
-          <a href="mailto:info@abinsurancebrokers.com"><div class="info-val">info@abinsurancebrokers.com</div></a>
-          <a href="mailto:abinsurancebro@gmail.com"><div class="info-sub">abinsurancebro@gmail.com</div></a>
-        </div>
-      </div>
-
-      <div style="margin-top:28px">
-        <div style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px">Direct Team Contacts</div>
-        <div class="team-contact">
-          <div class="tc-card">
-            <div class="tc-name">Binyam Terfa</div>
-            <div class="tc-role">CEO</div>
-            <a href="tel:+251911209333" class="tc-phone">📞 +251-911-20-93-33</a>
-          </div>
-          <div class="tc-card">
-            <div class="tc-name">Widad Abdulrashid</div>
-            <div class="tc-role">Office Manager &amp; EA</div>
-            <a href="tel:+251911862565" class="tc-phone">📞 +251-911-86-25-65</a>
-          </div>
-          <div class="tc-card">
-            <div class="tc-name">Amanuel Abdissa</div>
-            <div class="tc-role">Head Underwriting</div>
-            <a href="tel:+251951444455" class="tc-phone">📞 +251-951-44-44-55</a>
-          </div>
-          <div class="tc-card">
-            <div class="tc-name">Daniel Kebede</div>
-            <div class="tc-role">Senior Claims Officer</div>
-            <a href="tel:+251929902891" class="tc-phone">📞 +251-929-90-28-91</a>
-          </div>
-          <div class="tc-card">
-            <div class="tc-name">Kidist Kassa</div>
-            <div class="tc-role">Senior Finance Officer</div>
-            <a href="tel:+251938599575" class="tc-phone">📞 +251-938-59-95-75</a>
-          </div>
-          <div class="tc-card">
-            <div class="tc-name">Yoseph T/Mariam</div>
-            <div class="tc-role">Claims Officer</div>
-            <a href="tel:+251961050366" class="tc-phone">📞 +251-961-05-03-66</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="map-embed">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.559!2d38.7578!3d9.0182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDEnMDUuNSJOIDM4wrA0NScyOC4xIkU!5e0!3m2!1sen!2set!4v1000000000000"
-          width="100%" height="280" style="border:0;display:block" allowfullscreen="" loading="lazy">
-        </iframe>
-      </div>
-    </div>
-
-    <div class="form-wrap reveal">
-      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:6px">Send Us a Message</h3>
-      <p style="font-size:13px;color:var(--muted);margin-bottom:24px">Fill the form and we'll respond within one business day.</p>
-
-      <div class="form-row">
-        <div>
-          <label class="form-label">First Name</label>
-          <input class="form-input" placeholder="Abebe"/>
-        </div>
-        <div>
-          <label class="form-label">Last Name</label>
-          <input class="form-input" placeholder="Kebede"/>
-        </div>
-      </div>
-      <label class="form-label">Company / Organization</label>
-      <input class="form-input" placeholder="Your company name (optional)"/>
-      <label class="form-label">Phone Number</label>
-      <input class="form-input" placeholder="+251 9__ __ __ __"/>
-      <label class="form-label">Email Address</label>
-      <input class="form-input" placeholder="you@company.com"/>
-      <label class="form-label">Insurance Type Needed</label>
-      <select class="form-select">
-        <option value="">— Select insurance type —</option>
-        <option>Business Insurance</option>
-        <option>Motor / Vehicle Insurance</option>
-        <option>Contractors All Risk (CAR)</option>
-        <option>Property Insurance</option>
-        <option>Liability Insurance</option>
-        <option>Life / Health Insurance</option>
-        <option>Workmen's Compensation</option>
-        <option>Engineering Insurance</option>
-        <option>Insurance Bond</option>
-        <option>Not sure — need advice</option>
-      </select>
-      <label class="form-label">Your Message</label>
-      <textarea class="form-textarea" placeholder="Tell us about your business, what you need to insure, your questions, or anything else..."></textarea>
-      <button class="btn-primary" style="width:100%;justify-content:center;margin-bottom:12px" onclick="alert('Thank you! We will contact you within one business day.')">Send Message →</button>
-      <div class="divider">or reach us instantly on</div>
-      <a href="https://wa.me/251951444455?text=Hello%2C%20I%20would%20like%20a%20free%20insurance%20quote." target="_blank">
-        <button class="wa-cta">📱 WhatsApp: +251-951-44-44-55</button>
-      </a>
-      <div style="text-align:center;font-size:11px;color:var(--muted);margin-top:16px">🔒 Your information is 100% confidential · NBE Licensed Broker · No service fees</div>
-    </div>
-  </div>
-</section>
-</body></html>
+</body>
+</html>

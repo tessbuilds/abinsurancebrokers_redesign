@@ -1,15 +1,19 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Services — Abiy &amp; Binyam Insurance Brokers</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="shared.css"/>
 <style>
-.service-block{display:grid;grid-template-columns:80px 1fr;gap:24px;align-items:flex-start;padding:32px;background:var(--navy3);border:1px solid var(--border2);border-radius:var(--r);transition:all .3s}
+.service-block{display:grid;grid-template-columns:80px 1fr;gap:24px;align-items:flex-start;padding:32px;background:var(--navy3);border:1px solid var(--border2);border-radius:var(--r);transition:all .3s;margin-bottom:16px}
 .service-block:hover{border-color:var(--border);box-shadow:0 12px 32px rgba(0,0,0,.3)}
-.svc-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:rgba(201,148,58,0.2);line-height:1}
-.svc-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:12px;color:var(--cream)}
+.svc-num{font-family:"Playfair Display",serif;font-size:3rem;font-weight:900;color:rgba(201,148,58,0.2);line-height:1}
+.svc-title{font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:700;margin-bottom:12px;color:var(--cream)}
 .svc-list{list-style:none;display:flex;flex-direction:column;gap:7px}
 .svc-list li{font-size:13px;color:rgba(250,246,238,.65);display:flex;align-items:flex-start;gap:8px;line-height:1.6}
-.svc-list li::before{content:'→';color:var(--gold);font-weight:700;flex-shrink:0;margin-top:1px}
+.svc-list li::before{content:"→";color:var(--gold);font-weight:700;flex-shrink:0;margin-top:1px}
 .insurer-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
 .insurer-pill{background:var(--navy3);border:1px solid var(--border2);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--muted);text-align:center;transition:all .2s}
 .insurer-pill:hover{border-color:var(--border);color:var(--cream)}
@@ -19,15 +23,17 @@
 .faq-q .arrow{color:var(--gold);transition:transform .3s;font-size:12px}
 .faq-a{padding:0 20px;max-height:0;overflow:hidden;transition:all .35s;font-size:13.5px;color:var(--muted);line-height:1.8}
 .faq-item.open .faq-a{padding:0 20px 18px;max-height:200px}
-.faq-item.open .arrow{transform:rotate(90deg)}
-</style>
-</head><body>
+.faq-item.open .arrow{transform:rotate(90deg)}</style>
+</head>
+<body>
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-logo">
-    <div class="logo-mark">AB</div>
+  <a href="index.html" class="nav-logo" style="text-decoration:none;color:inherit">
+    <img src="logo.png" alt="ABIB Logo" style="width:65px;height:65px;border-radius:10px;object-fit:cover;flex-shrink:0"/>
     <div class="logo-text">Abiy &amp; Binyam<span>Insurance Brokers · Ethiopia</span></div>
   </a>
+
+  <!-- Desktop links -->
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="products.html">Products</a>
@@ -36,32 +42,118 @@
     <a href="reviews.html">Reviews</a>
     <a href="contact.html">Contact</a>
   </div>
-  <div style="display:flex;align-items:center;gap:10px">
+
+  <!-- Desktop right actions -->
+  <div class="nav-actions">
     <div class="nav-lang">🌐 EN | አማርኛ</div>
     <a href="contact.html"><button class="nav-cta">Get a Quote →</button></a>
+    <!-- Burger (visible on mobile) -->
+    <button class="burger" id="burgerBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<!-- FLOATING -->
-<div class="floating-actions">
-  <a href="https://wa.me/251951444455" target="_blank"><button class="float-btn wa-float" title="WhatsApp">📱</button></a>
-  <a href="https://t.me/abinsurancebrokers" target="_blank"><button class="float-btn tel-float" title="Telegram">✈️</button></a>
+<!-- Mobile drawer -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">🏠 Home</a>
+  <a href="products.html">📋 Products</a>
+  <a href="services.html">⚙️ Services</a>
+  <a href="about.html">👥 About</a>
+  <a href="reviews.html">⭐ Reviews</a>
+  <a href="contact.html">📍 Contact</a>
+  <div class="mob-divider"></div>
+  <a href="contact.html" class="mob-cta">Get a Free Quote →</a>
+  <a href="https://wa.me/251951444455" target="_blank" class="mob-wa">📱 WhatsApp: +251-951-44-44-55</a>
+  <div class="mob-lang">🌐 EN | አማርኛ</div>
 </div>
+
+<!-- FLOATING BUTTONS -->
+<div class="floating-actions">
+  <a href="https://wa.me/251951444455?text=Hello%2C%20I%20would%20like%20a%20free%20insurance%20quote." target="_blank">
+    <button class="float-btn wa-float" title="WhatsApp Us">📱</button>
+  </a>
+  <a href="https://t.me/abinsurancebrokers" target="_blank">
+    <button class="float-btn tel-float" title="Telegram">✈️</button>
+  </a>
+</div>
+
+<script>
+const burger = document.getElementById("burgerBtn");
+const menu   = document.getElementById("mobileMenu");
+
+function closeMenu() {
+  burger.classList.remove("open");
+  menu.classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+burger.addEventListener("click", () => {
+  burger.classList.toggle("open");
+  menu.classList.toggle("open");
+  document.body.style.overflow = menu.classList.contains("open") ? "hidden" : "";
+});
+
+menu.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 900) closeMenu();
+});
+
+const page = window.location.pathname.split("/").pop() || "index.html";
+document.querySelectorAll(".nav-links a, .mobile-menu a").forEach(a => {
+  if (a.getAttribute("href") === page) a.classList.add("active");
+});
+
+window.addEventListener("scroll", () => {
+  document.querySelector("nav").style.boxShadow = window.scrollY > 40 ? "0 4px 32px rgba(0,0,0,.6)" : "none";
+});
+</script>
+<div class="page-hero">
+  <div class="page-hero-tag">What We Do</div>
+  <h1>Your Trusted Partner in<br/><em>Protection &amp; Peace of Mind</em></h1>
+  <p>Comprehensive brokerage services — from risk assessment to claims settlement — all at no service charge to you.</p>
+</div>
+<section>
+  <div class="reveal" style="margin-bottom:48px"><div class="section-tag">Scope of Services</div><h2 class="section-title">Six Pillars of Our Brokerage</h2><p class="section-sub">Everything you need to be properly insured — delivered by specialists at zero cost to you.</p></div>
+  <div class="service-block reveal"><div class="svc-num">01</div><div><div class="svc-title">Risk Assessment, Analysis &amp; Management</div><ul class="svc-list"><li>Identifying, evaluating and analyzing client's business operational and personal risks</li><li>Assessing current insurance gaps and exposure to financial loss</li><li>Preparing risk profiles and insurance requirement assessments</li><li>Professional guidance on risk prevention and mitigation strategies</li><li>Offering training or awareness sessions on insurance and risk management for client's staff</li></ul></div></div>
+  <div class="service-block reveal"><div class="svc-num">02</div><div><div class="svc-title">Advisory &amp; Consultation</div><ul class="svc-list"><li>Advising clients on suitable insurance products and coverage options</li><li>Providing independent, unbiased comparisons among different insurers</li><li>Recommending optimal insurance programs that balance cost, coverage, and risk protection</li><li>Ongoing review and analysis of insurance policies including coverage adequacy and claims analysis</li></ul></div></div>
+  <div class="service-block reveal"><div class="svc-num">03</div><div><div class="svc-title">Policy Placement &amp; Administration</div><ul class="svc-list"><li>Negotiating with insurers to obtain competitive terms, conditions, and premiums</li><li>Guiding and assisting in preparing and submitting insurance proposal forms</li><li>Reviewing and confirming policy wording to ensure relevancy and adequacy of coverage</li><li>Monitoring policy expiration dates and coordinating timely renewals</li></ul></div></div>
+  <div class="service-block reveal"><div class="svc-num">04</div><div><div class="svc-title">Financial Consideration</div><ul class="svc-list"><li>Competitive premium quotations through market bidding across 22+ insurers</li><li>Structuring insurance premiums in line with client's financial goals</li><li>Guidance on avoiding over-insurance or under-insurance</li><li>No service fees to clients — our commission is paid by the selected insurer</li></ul></div></div>
+  <div class="service-block reveal"><div class="svc-num">05</div><div><div class="svc-title">Claims Management &amp; Support</div><ul class="svc-list"><li>Guiding and assisting clients in preparing, submitting, and pursuing insurance claims</li><li>Liaising with insurers to ensure fair and prompt claim settlement</li><li>Dedicated claims support team — expediting claim service</li><li>Ongoing follow-up until final settlement of all claims</li><li>Intermediating in claims negotiations and resolving disputes</li></ul></div></div>
+  <div class="service-block reveal"><div class="svc-num">06</div><div><div class="svc-title">Continuous Client Support</div><ul class="svc-list"><li>Offering continuous advisory support throughout the policy period</li><li>Providing updates on new insurance products, legal, and regulatory changes</li><li>Maintaining transparent and ethical relationships with clients and insurers</li><li>Providing timely insights on insurance market conditions and emerging risks</li></ul></div></div>
+</section>
+<section style="background:var(--navy2)">
+  <div class="reveal" style="text-align:center;margin-bottom:40px"><div class="section-tag">Our Insurer Network</div><h2 class="section-title">22+ Insurance Companies We Partner With</h2></div>
+  <div class="insurer-grid reveal">
+    <div class="insurer-pill">🦁 Anbessa (Lion) Insurance</div><div class="insurer-pill">🏛️ Ethiopian Insurance Corporation</div><div class="insurer-pill">🇪🇹 National Insurance Co. of Ethiopia</div><div class="insurer-pill">🌿 Oromia Insurance Company</div><div class="insurer-pill">✨ Berhan Insurance SC</div><div class="insurer-pill">⏱️ Zemen Insurance</div><div class="insurer-pill">🤝 Hibret (United) Insurance</div><div class="insurer-pill">☀️ Tsehay Insurance</div><div class="insurer-pill">🦛 Nyala Insurance SC</div><div class="insurer-pill">🌊 Nile Insurance SC</div><div class="insurer-pill">💎 Lucy Insurance</div><div class="insurer-pill">🌊 Awash Insurance</div><div class="insurer-pill">🌍 Global Insurance Company</div><div class="insurer-pill">🏠 Ethio Life &amp; General Insurance</div><div class="insurer-pill">🌍 Africa Insurance SC</div><div class="insurer-pill">🏞️ Abay Insurance SC</div><div class="insurer-pill">☕ Bunna Insurance</div><div class="insurer-pill">🏦 NIB Insurance</div>
+  </div>
+</section>
+<section>
+  <div class="reveal" style="margin-bottom:36px"><div class="section-tag">FAQs</div><h2 class="section-title">Frequently Asked Questions</h2></div>
+  <div style="max-width:720px" class="reveal">
+    <div class="faq-item open"><div class="faq-q" onclick="toggle(this)">How do I get started with ABIB? <span class="arrow">›</span></div><div class="faq-a">Simply reach out via the contact form, phone, or WhatsApp. Share your details and we'll craft a tailored insurance plan — at no service cost.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)">Do you charge for your brokerage services? <span class="arrow">›</span></div><div class="faq-a">No. We charge absolutely no service fees to clients. Our commission is paid by the selected insurance company.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)">How do I make changes to my existing policy? <span class="arrow">›</span></div><div class="faq-a">Contact us by phone, email, or WhatsApp and we will accommodate your request promptly.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)">How do I file a claim? <span class="arrow">›</span></div><div class="faq-a">Contact our dedicated claims team immediately after an incident. We guide you through the entire process until your claim is resolved.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)">Which insurance companies do you work with? <span class="arrow">›</span></div><div class="faq-a">We work with all 22+ insurance companies operating in Ethiopia, including Awash, Nyala, Nile, Oromia, Ethiopian Insurance Corporation, NIB, and more.</div></div>
+  </div>
+</section>
+<script>function toggle(el){el.closest(".faq-item").classList.toggle("open")}</script>
+
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
-        <div class="logo-mark">AB</div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+        <img src="logo.png" alt="ABIB Logo" style="width:48px;height:48px;border-radius:10px;object-fit:cover"/>
         <div class="logo-text">Abiy &amp; Binyam<span>Insurance Brokers</span></div>
       </div>
-      <p>Ethiopia's trusted insurance brokerage. Connecting businesses and individuals with the right coverage since 1994. Licensed &amp; regulated by the National Bank of Ethiopia.</p>
+      <p>Ethiopia's trusted insurance brokerage since 1996. Connecting businesses and individuals with the right coverage. Licensed &amp; regulated by the National Bank of Ethiopia.</p>
       <div class="social-links">
-        <div class="social-btn">𝕏</div>
-        <div class="social-btn">in</div>
-        <div class="social-btn">f</div>
-        <div class="social-btn">📷</div>
+        <div class="social-btn">𝕏</div><div class="social-btn">in</div>
+        <div class="social-btn">f</div><div class="social-btn">📷</div>
       </div>
     </div>
     <div class="footer-col">
@@ -96,174 +188,17 @@
   <div class="footer-bottom">
     <span>© 2026 Abiy &amp; Binyam Insurance Brokers. All rights reserved.</span>
     <div class="nbe-badge">🏦 NBE Licensed · Reg No. LB/006/95</div>
-    <div style="display:flex;gap:16px"><a href="#" style="color:var(--muted)">Privacy Policy</a><a href="#" style="color:var(--muted)">Terms of Use</a></div>
+    <div style="display:flex;gap:16px">
+      <a href="#" style="color:var(--muted)">Privacy Policy</a>
+      <a href="#" style="color:var(--muted)">Terms of Use</a>
+    </div>
   </div>
 </footer>
 <script>
-const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}}),{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-const p=window.location.pathname.split('/').pop();
-document.querySelectorAll('.nav-links a').forEach(a=>{if(a.getAttribute('href')===p)a.classList.add('active')});
-window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxShadow=window.scrollY>40?'0 4px 32px rgba(0,0,0,.5)':'none'});
+const obs = new IntersectionObserver(e => e.forEach(el => {
+  if (el.isIntersecting) { el.target.classList.add('visible'); obs.unobserve(el.target); }
+}), { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
-<div class="page-hero">
-  <div class="page-hero-tag">What We Do</div>
-  <h1>Your Trusted Partner in<br/><em>Protection &amp; Peace of Mind</em></h1>
-  <p>Comprehensive brokerage services — from risk assessment to claims settlement — all at no service charge to you.</p>
-</div>
-
-<section>
-  <div class="reveal" style="margin-bottom:48px">
-    <div class="section-tag">Scope of Services</div>
-    <h2 class="section-title">Six Pillars of Our Brokerage</h2>
-    <p class="section-sub">Everything you need to be properly insured and protected — delivered by specialists.</p>
-  </div>
-  <div style="display:flex;flex-direction:column;gap:16px">
-    <div class="service-block reveal">
-      <div class="svc-num">01</div>
-      <div>
-        <div class="svc-title">Risk Assessment, Analysis &amp; Management</div>
-        <ul class="svc-list">
-          <li>Identifying, evaluating and analyzing client's business operational and personal risks</li>
-          <li>Assessing current insurance gaps and exposure to financial loss</li>
-          <li>Preparing risk profiles and insurance requirement assessments</li>
-          <li>Identifying special risk factors unique to your business or operations</li>
-          <li>Professional guidance on risk prevention and mitigation strategies</li>
-          <li>Sourcing the best insurance product available on the market for your needs</li>
-          <li>Offering training or awareness sessions on insurance and risk management for client's staff</li>
-        </ul>
-      </div>
-    </div>
-    <div class="service-block reveal">
-      <div class="svc-num">02</div>
-      <div>
-        <div class="svc-title">Advisory &amp; Consultation</div>
-        <ul class="svc-list">
-          <li>Advising clients on suitable insurance products and coverage options</li>
-          <li>Providing independent, unbiased comparisons among different insurers</li>
-          <li>Recommending optimal insurance programs that balance cost, coverage, and risk protection</li>
-          <li>Advising on risk mitigation methods and policy limitations</li>
-          <li>Ongoing review and analysis of insurance policies including coverage adequacy and claims analysis</li>
-        </ul>
-      </div>
-    </div>
-    <div class="service-block reveal">
-      <div class="svc-num">03</div>
-      <div>
-        <div class="svc-title">Policy Placement &amp; Administration</div>
-        <ul class="svc-list">
-          <li>Negotiating with insurers to obtain competitive terms, conditions, and premiums</li>
-          <li>Guiding and assisting in preparing and submitting insurance proposal forms</li>
-          <li>Reviewing and confirming policy wording to ensure relevancy and adequacy of coverage</li>
-          <li>Monitoring policy expiration dates and coordinating timely renewals</li>
-          <li>Advising clients on policy amendments or new coverage as business conditions change</li>
-        </ul>
-      </div>
-    </div>
-    <div class="service-block reveal">
-      <div class="svc-num">04</div>
-      <div>
-        <div class="svc-title">Financial Consideration</div>
-        <ul class="svc-list">
-          <li>Competitive premium quotations through market bidding across 22+ insurers</li>
-          <li>Structuring insurance premiums in line with client's financial goals</li>
-          <li>Guidance on avoiding over-insurance or under-insurance</li>
-          <li>Time-saving and money-saving service with no service fees to clients</li>
-        </ul>
-      </div>
-    </div>
-    <div class="service-block reveal">
-      <div class="svc-num">05</div>
-      <div>
-        <div class="svc-title">Claims Management &amp; Support</div>
-        <ul class="svc-list">
-          <li>Guiding and assisting clients in preparing, submitting, and pursuing insurance claims</li>
-          <li>Liaising with insurers to ensure fair and prompt claim settlement</li>
-          <li>Dedicated claims support team — expediting claim service and saving time</li>
-          <li>Streamlined online tracking of claims</li>
-          <li>Ongoing follow-up until final settlement</li>
-          <li>Intermediating in claims negotiations and resolving disputes for amicable settlements</li>
-        </ul>
-      </div>
-    </div>
-    <div class="service-block reveal">
-      <div class="svc-num">06</div>
-      <div>
-        <div class="svc-title">Continuous Client Support</div>
-        <ul class="svc-list">
-          <li>Offering continuous advisory support throughout the policy period</li>
-          <li>Providing updates on new insurance products, legal, and regulatory changes</li>
-          <li>Maintaining transparent and ethical relationships with both clients and insurers</li>
-          <li>Maintaining proper records and technology support for policy documentation</li>
-          <li>Providing timely insights on insurance market conditions and emerging risks</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section style="background:var(--navy2)">
-  <div class="reveal" style="text-align:center;margin-bottom:40px">
-    <div class="section-tag">Our Insurer Network</div>
-    <h2 class="section-title">22+ Insurance Companies We Partner With</h2>
-    <p style="color:var(--muted);font-size:14px;max-width:500px;margin:0 auto">We work with every major insurer operating in Ethiopia to find you the best coverage at the most competitive rate.</p>
-  </div>
-  <div class="insurer-grid reveal">
-    <div class="insurer-pill">🦁 Anbessa (Lion) Insurance</div>
-    <div class="insurer-pill">🏛️ Ethiopian Insurance Corporation</div>
-    <div class="insurer-pill">🇪🇹 National Insurance Co. of Ethiopia</div>
-    <div class="insurer-pill">🌿 Oromia Insurance Company</div>
-    <div class="insurer-pill">✨ Berhan Insurance SC</div>
-    <div class="insurer-pill">⏱️ Zemen Insurance</div>
-    <div class="insurer-pill">🤝 Hibret (United) Insurance</div>
-    <div class="insurer-pill">☀️ Tsehay Insurance</div>
-    <div class="insurer-pill">🦛 Nyala Insurance SC</div>
-    <div class="insurer-pill">🌊 Nile Insurance SC</div>
-    <div class="insurer-pill">💎 Lucy Insurance</div>
-    <div class="insurer-pill">🌊 Awash Insurance</div>
-    <div class="insurer-pill">🌍 Global Insurance Company</div>
-    <div class="insurer-pill">🏠 Ethio Life &amp; General Insurance</div>
-    <div class="insurer-pill">🌍 Africa Insurance SC</div>
-    <div class="insurer-pill">🏞️ Abay Insurance SC</div>
-    <div class="insurer-pill">☕ Bunna Insurance</div>
-    <div class="insurer-pill">🏦 NIB Insurance</div>
-    <div class="insurer-pill">+ More Partners</div>
-  </div>
-</section>
-
-<section>
-  <div class="reveal" style="margin-bottom:36px">
-    <div class="section-tag">FAQs</div>
-    <h2 class="section-title">Frequently Asked Questions</h2>
-  </div>
-  <div style="max-width:720px" class="reveal">
-    <div class="faq-item open">
-      <div class="faq-q" onclick="toggle(this)">How do I get started with ABIB? <span class="arrow">›</span></div>
-      <div class="faq-a">Simply reach out to our team via the contact form, phone, or WhatsApp. Share your business or personal details and we'll craft a tailored insurance plan for you — at no service cost.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">Do you charge for your brokerage services? <span class="arrow">›</span></div>
-      <div class="faq-a">No. We charge absolutely no service fees to clients. Our commission is paid by the selected insurance company — meaning you receive expert advisory and full brokerage support completely free of charge.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">How do I make changes to my existing policy? <span class="arrow">›</span></div>
-      <div class="faq-a">Contact us directly by phone, email, or WhatsApp and we will make every effort to accommodate your request promptly. Policy adjustments, endorsements, and coverage changes are handled on your behalf.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">How do I file a claim? <span class="arrow">›</span></div>
-      <div class="faq-a">Contact our dedicated claims team immediately after an incident. We guide you through the entire process — documentation, submission, follow-up, and settlement negotiation — until your claim is resolved.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">Which insurance companies do you work with? <span class="arrow">›</span></div>
-      <div class="faq-a">We work with all 22+ insurance companies operating in Ethiopia, including Awash, Nyala, Nile, Oromia, Ethiopian Insurance Corporation, NIB, and many more. This allows us to find the most competitive rates and coverage for your needs.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">Do you have questions about billing? <span class="arrow">›</span></div>
-      <div class="faq-a">Get in touch with our dedicated customer support team by sharing your policy number. Our finance team will assist you with any billing or premium-related queries promptly.</div>
-    </div>
-  </div>
-</section>
-<script>
-function toggle(el){const item=el.closest('.faq-item');item.classList.toggle('open')}
-</script>
-</body></html>
+</body>
+</html>
