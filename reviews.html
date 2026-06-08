@@ -1,0 +1,253 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Client Reviews — Abiy &amp; Binyam Insurance Brokers</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.review-card{background:var(--navy3);border:1px solid var(--border2);border-radius:var(--r);padding:28px;transition:all .3s;position:relative}
+.review-card:hover{border-color:var(--border);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.review-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);border-radius:var(--r) var(--r) 0 0}
+.qmark{font-family:'Playfair Display',serif;font-size:4rem;color:rgba(201,148,58,0.15);line-height:.7;margin-bottom:10px}
+.review-text{font-size:14px;color:rgba(250,246,238,.75);line-height:1.8;margin-bottom:20px}
+.amharic-text{font-size:14px;color:rgba(250,246,238,.7);line-height:1.9;margin-bottom:20px}
+.reviewer{display:flex;align-items:center;gap:12px}
+.rev-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;color:var(--navy);font-size:14px;flex-shrink:0}
+.rev-name{font-size:14px;font-weight:600}
+.rev-role{font-size:12px;color:var(--muted);margin-top:2px}
+.rev-date{font-size:11px;color:rgba(201,148,58,.6);margin-top:3px}
+.stars{color:var(--gold);font-size:14px;letter-spacing:2px;margin-bottom:12px}
+.score-box{background:var(--navy3);border:1px solid var(--border);border-radius:16px;padding:32px;text-align:center}
+.big-score{font-family:'Playfair Display',serif;font-size:5rem;font-weight:900;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.write-form{background:var(--navy3);border:1px solid var(--border);border-radius:16px;padding:32px}
+.form-label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;display:block}
+.form-input,.form-textarea,.form-select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border2);border-radius:8px;padding:11px 14px;color:var(--cream);font-family:'Outfit',sans-serif;font-size:14px;outline:none;transition:border-color .2s;margin-bottom:16px}
+.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--gold)}
+.form-textarea{resize:vertical;min-height:100px}
+.star-rate{display:flex;gap:8px;margin-bottom:16px;font-size:28px;cursor:pointer}
+.star-rate span{color:var(--muted);transition:color .1s}
+.star-rate span.on{color:var(--gold)}
+</style>
+</head><body>
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="logo-mark">AB</div>
+    <div class="logo-text">Abiy &amp; Binyam<span>Insurance Brokers · Ethiopia</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px">
+    <div class="nav-lang">🌐 EN | አማርኛ</div>
+    <a href="contact.html"><button class="nav-cta">Get a Quote →</button></a>
+  </div>
+</nav>
+
+<!-- FLOATING -->
+<div class="floating-actions">
+  <a href="https://wa.me/251951444455" target="_blank"><button class="float-btn wa-float" title="WhatsApp">📱</button></a>
+  <a href="https://t.me/abinsurancebrokers" target="_blank"><button class="float-btn tel-float" title="Telegram">✈️</button></a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+        <div class="logo-mark">AB</div>
+        <div class="logo-text">Abiy &amp; Binyam<span>Insurance Brokers</span></div>
+      </div>
+      <p>Ethiopia's trusted insurance brokerage. Connecting businesses and individuals with the right coverage since 1994. Licensed &amp; regulated by the National Bank of Ethiopia.</p>
+      <div class="social-links">
+        <div class="social-btn">𝕏</div>
+        <div class="social-btn">in</div>
+        <div class="social-btn">f</div>
+        <div class="social-btn">📷</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="products.html#life">Life &amp; Health</a></li>
+        <li><a href="products.html#general">General Insurance</a></li>
+        <li><a href="products.html#engineering">Engineering</a></li>
+        <li><a href="products.html#bonds">Insurance Bonds</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Our Services</a></li>
+        <li><a href="reviews.html">Client Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">📍 Kirkos, CETU Bldg 2F, Addis Ababa</a></li>
+        <li><a href="tel:+251115527255">📞 +251-115-52-72-55</a></li>
+        <li><a href="tel:+251951444455">📱 +251-951-44-44-55</a></li>
+        <li><a href="mailto:info@abinsurancebrokers.com">✉️ info@abinsurancebrokers.com</a></li>
+        <li><a href="https://wa.me/251951444455">📲 WhatsApp Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Abiy &amp; Binyam Insurance Brokers. All rights reserved.</span>
+    <div class="nbe-badge">🏦 NBE Licensed · Reg No. LB/006/95</div>
+    <div style="display:flex;gap:16px"><a href="#" style="color:var(--muted)">Privacy Policy</a><a href="#" style="color:var(--muted)">Terms of Use</a></div>
+  </div>
+</footer>
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const p=window.location.pathname.split('/').pop();
+document.querySelectorAll('.nav-links a').forEach(a=>{if(a.getAttribute('href')===p)a.classList.add('active')});
+window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxShadow=window.scrollY>40?'0 4px 32px rgba(0,0,0,.5)':'none'});
+</script>
+<div class="page-hero">
+  <div class="page-hero-tag">Client Reviews</div>
+  <h1>Ethiopia's Trusted Insurance Brokers —<br/><em>Hear From Our Clients</em></h1>
+  <p>Protecting businesses and individuals across Ethiopia with expert, transparent insurance guidance since 1994.</p>
+</div>
+
+<section>
+  <div style="display:grid;grid-template-columns:1fr 3fr;gap:40px;align-items:flex-start">
+    <div class="score-box reveal">
+      <div class="big-score">5.0</div>
+      <div style="color:var(--gold);font-size:22px;letter-spacing:3px;margin:8px 0">★★★★★</div>
+      <div style="font-size:13px;color:var(--muted)">Based on 5 verified reviews</div>
+      <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px">
+          <span style="color:var(--gold)">5★</span>
+          <div style="flex:1;height:6px;background:var(--navy2);border-radius:3px;overflow:hidden"><div style="width:100%;height:100%;background:var(--gold);border-radius:3px"></div></div>
+          <span style="color:var(--muted)">5</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px">
+          <span style="color:var(--gold)">4★</span>
+          <div style="flex:1;height:6px;background:var(--navy2);border-radius:3px;overflow:hidden"><div style="width:0%;height:100%;background:var(--gold);border-radius:3px"></div></div>
+          <span style="color:var(--muted)">0</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px">
+          <span style="color:var(--gold)">3★</span>
+          <div style="flex:1;height:6px;background:var(--navy2);border-radius:3px;overflow:hidden"><div style="width:0%;height:100%;background:var(--gold);border-radius:3px"></div></div>
+          <span style="color:var(--muted)">0</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <div class="qmark">"</div>
+        <p class="review-text">The firm has demonstrated remarkable professionalism, transparency, and dedication in representing the interests of our Organization. Their technical expertise and client-focused approach make them a trusted partner in insurance matters. We are pleased to recommend their brokerage services to other organizations.</p>
+        <div class="reviewer">
+          <div class="rev-avatar">RT</div>
+          <div>
+            <div class="rev-name">Rahel Terefe, CEO</div>
+            <div class="rev-role">ICMC General Hospital</div>
+            <div class="rev-date">May 8, 2026</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <div class="qmark">"</div>
+        <p class="review-text">ABIB is a highly professional insurance company. They have managed the insurance for my company Prime Meat's properties for the past 17 years. They are very skilled in researching and finding the best insurance companies that cater to our particular business, and negotiating the best terms on our behalf. They found the best deals for us and we've been happy since. Any problem we've had with our properties, they quickly filed claims to guarantee smooth coverage, therefore saving us a lot in time and money. I cannot recommend them enough!</p>
+        <div class="reviewer">
+          <div class="rev-avatar">KA</div>
+          <div>
+            <div class="rev-name">Dr Kassahun Abberu</div>
+            <div class="rev-role">Owner Manager — Prime Meat and Food Products</div>
+            <div class="rev-date">March 5, 2026 · 17-year client</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <div class="qmark">"</div>
+        <p class="review-text">We have had the privilege of working with ABIB Insurance Brokers for over 15 years, and throughout this period we have found them to be highly professional and reliable risk management partners with a strong sense of integrity. Their team consistently goes the extra mile to support their clients, particularly in facilitating and following up on insurance claims arising from accidents and damages. Their proactive approach, combined with their helpful attitude and positive outlook, has made working with them both efficient and reassuring. ABIB has also been very responsive in securing competitive quotations, ensuring timely follow-ups on policy renewals, and providing valuable advice on the most appropriate insurance coverages for our needs. We confidently recommend ABIB Insurance Brokers to any organization seeking a professional and trustworthy insurance brokerage service.</p>
+        <div class="reviewer">
+          <div class="rev-avatar">AG</div>
+          <div>
+            <div class="rev-name">Akalu Geleta, CEO</div>
+            <div class="rev-role">Akakas Logistics Plc</div>
+            <div class="rev-date">March 4, 2026 · 15-year client</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <div class="qmark">"</div>
+        <p class="amharic-text">አቢይ እና ቢንያም ኢንሹራንስ ብሮከርስ በኢትዮጵያ ውስጥ በእውነት የሚታመን እና የተሟላ አገልግሎት የሚሰጥ ድርጅት ነው። ቡድናቸው በጣም ባለሙያ ናቸው፣ የደንበኞችን ፍላጎት በትክክል ይሰማሉ እና ለእያንዳንዱ ሰው ተስማሚ የሆነ የኢንሹራንስ መፍትሄ ያቀርባሉ። ሂደቱን ቀላል እና ግልፅ አድርገው ያብራራሉ፣ ስለዚህ የሚያጋጥም ግርግር ወይም ድንጋጤ አይኖርም። ከመጀመሪያ እስከ መጨረሻ ድረስ ያሳዩት ትኩረት፣ ፍጥነት እና ታማኝነት በጣም ያስደነቃል።</p>
+        <div class="reviewer">
+          <div class="rev-avatar">ኤ</div>
+          <div>
+            <div class="rev-name">ኤፍረም</div>
+            <div class="rev-role">Verified Client</div>
+            <div class="rev-date">January 28, 2026</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <div class="qmark">"</div>
+        <p class="review-text">We were impressed by how Abiy &amp; Binyam Insurance Brokers navigated the Ethiopian insurance market to secure a very good deal for our business. They took the time to understand our risks, compared policies from top Ethiopian insurers, and negotiated strong coverage at a price that fit our budget. Their transparency, professionalism, and deep knowledge of the local market made the entire process smooth and stress-free. We now feel confident knowing our business is protected by the best options available in Ethiopia.</p>
+        <div class="reviewer">
+          <div class="rev-avatar">DV</div>
+          <div>
+            <div class="rev-name">Dave</div>
+            <div class="rev-role">Business Owner</div>
+            <div class="rev-date">January 25, 2026</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--navy2)">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:flex-start">
+    <div class="reveal">
+      <div class="section-tag">Share Your Experience</div>
+      <h2 class="section-title">Write a Review</h2>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:28px">Your feedback helps other Ethiopian businesses and individuals make informed insurance decisions.</p>
+    </div>
+    <div class="write-form reveal">
+      <div class="form-label">Your Overall Rating</div>
+      <div class="star-rate" id="stars">
+        <span onclick="rate(1)">★</span><span onclick="rate(2)">★</span><span onclick="rate(3)">★</span><span onclick="rate(4)">★</span><span onclick="rate(5)">★</span>
+      </div>
+      <label class="form-label">Review Title</label>
+      <input class="form-input" placeholder="Summarize your experience"/>
+      <label class="form-label">Your Review</label>
+      <textarea class="form-textarea" placeholder="Share details about your experience with ABIB..."></textarea>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div>
+          <label class="form-label">Your Name</label>
+          <input class="form-input" placeholder="Full name or company"/>
+        </div>
+        <div>
+          <label class="form-label">Your Email</label>
+          <input class="form-input" placeholder="email@company.com"/>
+        </div>
+      </div>
+      <button class="btn-primary" style="width:100%;justify-content:center" onclick="alert('Thank you! Your review has been submitted.')">Submit Review →</button>
+    </div>
+  </div>
+</section>
+<script>
+function rate(n){document.querySelectorAll('#stars span').forEach((s,i)=>{s.classList.toggle('on',i<n)})}
+</script>
+</body></html>
