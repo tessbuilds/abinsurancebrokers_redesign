@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>File a Claim — Abiy &amp; Binyam Insurance Brokers</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.claims-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+/* ── INFO SIDE ── */
+.claims-info { position: sticky; top: 100px; }
+.claims-info h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem; font-weight: 700; line-height: 1.2;
+  margin-bottom: 16px;
+}
+.claims-info p {
+  font-size: 14px; color: var(--muted); line-height: 1.8;
+  margin-bottom: 28px;
+}
+.step-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
+.step-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 16px; background: var(--navy3);
+  border: 1px solid var(--border2); border-radius: 10px;
+  transition: border-color .2s;
+}
+.step-item:hover { border-color: var(--border); }
+.step-circle {
+  width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: 13px; color: var(--navy);
+}
+.step-item h4 { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+.step-item p { font-size: 12px; color: var(--muted); margin: 0; line-height: 1.5; }
+.contact-strip {
+  background: var(--navy3); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px;
+}
+.contact-strip h4 { font-size: 13px; font-weight: 700; margin-bottom: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+.contact-strip a {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--cream); text-decoration: none;
+  padding: 8px 0; border-bottom: 1px solid var(--border2);
+  transition: color .2s;
+}
+.contact-strip a:last-child { border-bottom: none; }
+.contact-strip a:hover { color: var(--gold2); }
+
+/* ── FORM SIDE ── */
+.claim-form-wrap {
+  background: var(--navy3);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+}
+.claim-form-wrap::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold2), transparent);
+}
+.form-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem; font-weight: 700; margin-bottom: 20px;
+  padding-bottom: 14px; border-bottom: 1px solid var(--border2);
+  display: flex; align-items: center; gap: 10px;
+}
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-full { grid-column: 1 / -1; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 4px; }
+.form-label {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: .8px;
+}
+.form-label span { color: #ef4444; margin-left: 2px; }
+.form-input, .form-select, .form-textarea {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border2);
+  border-radius: 8px; padding: 12px 14px;
+  color: var(--cream); font-family: 'Outfit', sans-serif;
+  font-size: 14px; outline: none;
+  transition: border-color .2s, background .2s;
+  width: 100%;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--gold);
+  background: rgba(201,148,58,0.04);
+}
+.form-input::placeholder, .form-textarea::placeholder { color: rgba(122,143,168,0.6); }
+.form-select { appearance: none; cursor: pointer; }
+.form-select option { background: var(--navy2); color: var(--cream); }
+.form-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+.form-divider {
+  height: 1px; background: var(--border2);
+  margin: 24px 0;
+}
+/* File upload */
+.file-upload-area {
+  border: 2px dashed var(--border);
+  border-radius: 10px; padding: 24px;
+  text-align: center; cursor: pointer;
+  transition: all .2s; position: relative;
+}
+.file-upload-area:hover { border-color: var(--gold); background: rgba(201,148,58,0.04); }
+.file-upload-area input[type="file"] {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+}
+.file-upload-icon { font-size: 32px; margin-bottom: 8px; }
+.file-upload-text { font-size: 14px; font-weight: 600; color: var(--cream); margin-bottom: 4px; }
+.file-upload-sub { font-size: 12px; color: var(--muted); }
+.file-list { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+.file-item {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(201,148,58,0.08); border: 1px solid var(--border);
+  border-radius: 6px; padding: 8px 12px;
+  font-size: 12px; color: var(--cream);
+}
+.file-item span { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.file-remove { cursor: pointer; color: var(--muted); font-size: 16px; flex-shrink: 0; }
+.file-remove:hover { color: #ef4444; }
+/* Consent */
+.consent-row {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 16px; background: rgba(201,148,58,0.06);
+  border: 1px solid var(--border); border-radius: 10px;
+  margin-top: 8px;
+}
+.consent-row input[type="checkbox"] {
+  width: 18px; height: 18px; flex-shrink: 0;
+  accent-color: var(--gold); cursor: pointer; margin-top: 2px;
+}
+.consent-row label { font-size: 13px; color: rgba(250,246,238,.7); line-height: 1.6; cursor: pointer; }
+/* Submit */
+.submit-area { margin-top: 24px; }
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  border: none; border-radius: 10px; padding: 16px;
+  color: var(--navy); font-family: 'Outfit', sans-serif;
+  font-size: 16px; font-weight: 700; cursor: pointer;
+  transition: all .25s; display: flex; align-items: center;
+  justify-content: center; gap: 10px;
+}
+.submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(201,148,58,0.4); }
+.submit-btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+.trust-note {
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px; margin-top: 16px;
+  font-size: 11px; color: var(--muted); flex-wrap: wrap;
+}
+/* Success state */
+.success-msg {
+  display: none;
+  text-align: center; padding: 48px 24px;
+}
+.success-msg.show { display: block; }
+.success-icon { font-size: 56px; margin-bottom: 20px; }
+.success-msg h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; font-weight: 700; margin-bottom: 12px; color: #4ade80;
+}
+.success-msg p { font-size: 14px; color: var(--muted); line-height: 1.8; max-width: 400px; margin: 0 auto 24px; }
+.success-ref {
+  display: inline-block;
+  background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3);
+  border-radius: 8px; padding: 10px 20px;
+  font-size: 13px; font-weight: 700; color: #4ade80;
+  letter-spacing: 1px; margin-bottom: 24px;
+}
+/* Loading spinner */
+.spinner {
+  width: 18px; height: 18px; border: 2px solid rgba(5,13,26,0.3);
+  border-top-color: var(--navy); border-radius: 50%;
+  animation: spin 0.7s linear infinite; display: none;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media(max-width:900px) {
+  .claims-layout { grid-template-columns: 1fr; }
+  .claims-info { position: static; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-full { grid-column: 1; }
+}
+@media(max-width:600px) {
+  .claim-form-wrap { padding: 24px 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo" style="text-decoration:none;color:inherit">
+    <img src="logo.png" alt="ABIB Logo" style="width:65px;height:65px;border-radius:10px;object-fit:cover;flex-shrink:0"/>
+    <div class="logo-text">Abiy &amp; Binyam<span>Insurance Brokers · Ethiopia</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="claims.html" class="active" style="color:#e8b85a;font-weight:600">Claims</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <div class="nav-lang">🌐 EN | አማርኛ</div>
+    <a href="contact.html"><button class="nav-cta">Get a Quote →</button></a>
+    <button class="burger" id="burgerBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">🏠 Home</a>
+  <a href="products.html">📋 Products</a>
+  <a href="services.html">⚙️ Services</a>
+  <a href="about.html">👥 About</a>
+  <a href="reviews.html">⭐ Reviews</a>
+  <a href="claims.html" class="active">📋 File a Claim</a>
+  <a href="contact.html">📍 Contact</a>
+  <div class="mob-divider"></div>
+  <a href="contact.html" class="mob-cta">Get a Free Quote →</a>
+  <a href="https://wa.me/251951444455" target="_blank" class="mob-wa">📱 WhatsApp: +251-951-44-44-55</a>
+  <div class="mob-lang">🌐 EN | አማርኛ</div>
+</div>
+
+<!-- FLOATING BUTTONS -->
+<div class="floating-actions">
+  <a href="https://wa.me/251951444455?text=Hello%2C%20I%20need%20help%20with%20a%20claim." target="_blank">
+    <button class="float-btn wa-float" title="WhatsApp Us">📱</button>
+  </a>
+  <a href="https://t.me/abinsurancebrokers" target="_blank">
+    <button class="float-btn tel-float" title="Telegram">✈️</button>
+  </a>
+</div>
+
+<script>
+const burger = document.getElementById('burgerBtn');
+const menu   = document.getElementById('mobileMenu');
+function closeMenu() {
+  burger.classList.remove('open');
+  menu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  menu.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+});
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.boxShadow = window.scrollY > 40 ? '0 4px 32px rgba(0,0,0,.6)' : 'none';
+});
+</script>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-tag">Claims Management</div>
+  <h1>File an <em>Insurance Claim</em></h1>
+  <p>Submit your claim online in minutes. Our dedicated claims team will review and contact you within 1–2 business days.</p>
+</div>
+
+<!-- MAIN CONTENT -->
+<section>
+  <div class="claims-layout">
+
+    <!-- LEFT — Info -->
+    <div class="claims-info reveal">
+      <div class="section-tag">How It Works</div>
+      <h2>Simple, Fast &amp; Transparent</h2>
+      <p>We handle your claim from submission to settlement — at no extra charge. Here's what happens after you submit:</p>
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-circle">01</div>
+          <div>
+            <h4>Submit Your Claim</h4>
+            <p>Fill the form with incident details and upload supporting documents.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">02</div>
+          <div>
+            <h4>Confirmation Email</h4>
+            <p>You'll receive an immediate confirmation with your claim reference number.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">03</div>
+          <div>
+            <h4>Claims Team Review</h4>
+            <p>Our dedicated team reviews your claim within 1–2 business days.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">04</div>
+          <div>
+            <h4>Officer Contacts You</h4>
+            <p>A claims officer calls you directly to guide you through the next steps.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">05</div>
+          <div>
+            <h4>Settlement</h4>
+            <p>We negotiate with the insurer on your behalf until your claim is fully settled.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-strip">
+        <h4>Need Urgent Help?</h4>
+        <a href="tel:+251115527255">📞 +251-115-52-72-55 — Office</a>
+        <a href="tel:+251951444455">📱 +251-951-44-44-55 — Mobile</a>
+        <a href="https://wa.me/251951444455" target="_blank">💬 WhatsApp Us Now</a>
+        <a href="mailto:abinsurancebro@gmail.com">✉️ abinsurancebro@gmail.com</a>
+      </div>
+    </div>
+
+    <!-- RIGHT — Form -->
+    <div class="reveal">
+      <div class="claim-form-wrap" id="formWrap">
+
+        <!-- SUCCESS STATE -->
+        <div class="success-msg" id="successMsg">
+          <div class="success-icon">✅</div>
+          <h3>Claim Submitted Successfully!</h3>
+          <p>Thank you. Our claims team will review your submission and contact you within 1–2 business days on the phone number you provided.</p>
+          <div class="success-ref" id="refNumber"></div>
+          <p style="font-size:13px">A confirmation email has been sent to your email address.</p>
+          <a href="index.html"><button class="btn-primary" style="margin:0 auto;display:inline-flex">← Back to Home</button></a>
+        </div>
+
+        <!-- FORM -->
+        <form id="claimForm" action="https://formspree.io/f/87R6524" method="POST" enctype="multipart/form-data">
+
+          <!-- CLAIMANT DETAILS -->
+          <div class="form-section-title">👤 Claimant Details</div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">First Name <span>*</span></label>
+              <input class="form-input" type="text" name="first_name" placeholder="Abebe" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name <span>*</span></label>
+              <input class="form-input" type="text" name="last_name" placeholder="Kebede" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number <span>*</span></label>
+              <input class="form-input" type="tel" name="phone" placeholder="+251 9__ __ __ __" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address <span>*</span></label>
+              <input class="form-input" type="email" name="email" placeholder="your@email.com" required/>
+            </div>
+            <div class="form-group form-full">
+              <label class="form-label">Policy Number</label>
+              <input class="form-input" type="text" name="policy_number" placeholder="e.g. BI-2025-4421 (leave blank if unknown)"/>
+            </div>
+          </div>
+
+          <div class="form-divider"></div>
+
+          <!-- CLAIM DETAILS -->
+          <div class="form-section-title">📋 Claim Details</div>
+          <div class="form-grid">
+            <div class="form-group form-full">
+              <label class="form-label">Claim Type <span>*</span></label>
+              <select class="form-select" name="claim_type" required>
+                <option value="">— Select Claim Type —</option>
+                <option>Motor / Vehicle Insurance</option>
+                <option>Business Insurance</option>
+                <option>Contractors All Risk (CAR)</option>
+                <option>Property Insurance</option>
+                <option>Liability Insurance</option>
+                <option>Workmen's Compensation</option>
+                <option>Life / Health Insurance</option>
+                <option>Engineering Insurance</option>
+                <option>Marine / Cargo Insurance</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Date of Incident <span>*</span></label>
+              <input class="form-input" type="date" name="incident_date" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Estimated Loss (ETB)</label>
+              <input class="form-input" type="text" name="estimated_loss" placeholder="e.g. 50,000"/>
+            </div>
+            <div class="form-group form-full">
+              <label class="form-label">Location of Incident <span>*</span></label>
+              <input class="form-input" type="text" name="incident_location" placeholder="Where did the incident occur?" required/>
+            </div>
+            <div class="form-group form-full">
+              <label class="form-label">Description of Incident <span>*</span></label>
+              <textarea class="form-textarea" name="description" placeholder="Please describe the incident in detail — what happened, when it occurred, where it occurred, and any damage, injuries, or losses involved." required></textarea>
+            </div>
+          </div>
+
+          <div class="form-divider"></div>
+
+          <!-- DOCUMENTS -->
+          <div class="form-section-title">📎 Supporting Documents</div>
+          <div class="file-upload-area" id="dropArea">
+            <input type="file" name="documents" id="fileInput" multiple accept=".jpg,.jpeg,.png,.pdf,.doc,.docx"/>
+            <div class="file-upload-icon">📁</div>
+            <div class="file-upload-text">Click to upload or drag &amp; drop</div>
+            <div class="file-upload-sub">Photos, Police Report, Medical Report — PDF, JPG, PNG. Max 5MB each</div>
+          </div>
+          <div class="file-list" id="fileList"></div>
+
+          <div class="form-divider"></div>
+
+          <!-- CONSENT -->
+          <div class="consent-row">
+            <input type="checkbox" id="consent" name="consent" value="agreed" required/>
+            <label for="consent">I confirm that the information provided is accurate and complete, and I authorize Abiy &amp; Binyam Insurance Brokers to process this claim on my behalf.</label>
+          </div>
+
+          <!-- SUBMIT -->
+          <div class="submit-area">
+            <button type="submit" class="submit-btn" id="submitBtn">
+              <span id="btnText">Submit Claim →</span>
+              <div class="spinner" id="spinner"></div>
+            </button>
+            <div class="trust-note">
+              <span>🔒 Secure &amp; Confidential</span>
+              <span>·</span>
+              <span>✓ NBE Licensed</span>
+              <span>·</span>
+              <span>⚡ Response within 1–2 business days</span>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+        <img src="logo.png" alt="ABIB Logo" style="width:48px;height:48px;border-radius:10px;object-fit:cover"/>
+        <div class="logo-text">Abiy &amp; Binyam<span>Insurance Brokers</span></div>
+      </div>
+      <p>Ethiopia's trusted insurance brokerage since 1996. Licensed &amp; regulated by the National Bank of Ethiopia.</p>
+      <div class="social-links">
+        <div class="social-btn">𝕏</div><div class="social-btn">in</div>
+        <div class="social-btn">f</div><div class="social-btn">📷</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="products.html#life">Life &amp; Health</a></li>
+        <li><a href="products.html#general">General Insurance</a></li>
+        <li><a href="products.html#engineering">Engineering</a></li>
+        <li><a href="products.html#bonds">Insurance Bonds</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Our Services</a></li>
+        <li><a href="reviews.html">Client Reviews</a></li>
+        <li><a href="claims.html">File a Claim</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">📍 Kirkos, CETU Bldg 2F, Addis Ababa</a></li>
+        <li><a href="tel:+251115527255">📞 +251-115-52-72-55</a></li>
+        <li><a href="tel:+251951444455">📱 +251-951-44-44-55</a></li>
+        <li><a href="mailto:abinsurancebro@gmail.com">✉️ abinsurancebro@gmail.com</a></li>
+        <li><a href="https://wa.me/251951444455">📲 WhatsApp Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="year"></span> Abiy &amp; Binyam Insurance Brokers. All rights reserved.</span>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <div class="nbe-badge">🏦 NBE Licensed · Reg No. LB/006/95</div>
+    <div style="display:flex;gap:16px">
+      <a href="#" style="color:var(--muted)">Privacy Policy</a>
+      <a href="#" style="color:var(--muted)">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver(e => e.forEach(el => {
+  if (el.isIntersecting) { el.target.classList.add('visible'); obs.unobserve(el.target); }
+}), { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// File upload display
+const fileInput = document.getElementById('fileInput');
+const fileList  = document.getElementById('fileList');
+let selectedFiles = [];
+
+fileInput.addEventListener('change', () => {
+  selectedFiles = Array.from(fileInput.files);
+  renderFiles();
+});
+
+function renderFiles() {
+  fileList.innerHTML = '';
+  selectedFiles.forEach((file, i) => {
+    const item = document.createElement('div');
+    item.className = 'file-item';
+    item.innerHTML = `<span>📄 ${file.name}</span><span style="color:var(--muted);font-size:11px">${(file.size/1024/1024).toFixed(2)}MB</span><span class="file-remove" onclick="removeFile(${i})">✕</span>`;
+    fileList.appendChild(item);
+  });
+}
+
+function removeFile(index) {
+  selectedFiles.splice(index, 1);
+  renderFiles();
+}
+
+// Form submission
+const form       = document.getElementById('claimForm');
+const submitBtn  = document.getElementById('submitBtn');
+const btnText    = document.getElementById('btnText');
+const spinner    = document.getElementById('spinner');
+const successMsg = document.getElementById('successMsg');
+const formWrap   = document.getElementById('formWrap');
+const refNumber  = document.getElementById('refNumber');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  // Show loading
+  submitBtn.disabled = true;
+  btnText.textContent = 'Submitting...';
+  spinner.style.display = 'block';
+
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      // Generate claim reference
+      const ref = 'CLM-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000);
+      refNumber.textContent = 'Claim Reference: ' + ref;
+
+      // Hide form, show success
+      form.style.display = 'none';
+      successMsg.classList.add('show');
+
+      // Scroll to top of form
+      formWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      throw new Error('Submission failed');
+    }
+  } catch (error) {
+    alert('There was a problem submitting your claim. Please try again or contact us directly at +251-115-52-72-55.');
+    submitBtn.disabled = false;
+    btnText.textContent = 'Submit Claim →';
+    spinner.style.display = 'none';
+  }
+});
+</script>
+
+</body>
+</html>

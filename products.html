@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
 <title>Insurance Products — Abiy &amp; Binyam Insurance Brokers</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="shared.css"/>
@@ -11,11 +11,25 @@
 .cat-header{display:flex;align-items:center;gap:16px;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border)}
 .cat-icon{width:52px;height:52px;border-radius:12px;background:rgba(201,148,58,0.12);border:1px solid rgba(201,148,58,0.2);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
 .cat-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700}
-.cat-count{font-size:12px;color:var(--gold);background:rgba(201,148,58,0.12);border:1px solid rgba(201,148,58,0.2);border-radius:100px;padding:3px 10px;font-weight:600}
-.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
-.product-pill{background:var(--navy3);border:1px solid var(--border2);border-radius:8px;padding:14px 16px;font-size:13.5px;display:flex;align-items:center;gap:10px;transition:all .2s;cursor:default}
-.product-pill:hover{border-color:var(--border);background:rgba(201,148,58,0.05);transform:translateX(3px)}
-.product-pill::before{content:'→';color:var(--gold);font-weight:700;flex-shrink:0}</style>
+.cat-count{font-size:12px;color:var(--gold);background:rgba(201,148,58,0.12);border:1px solid rgba(201,148,58,0.2);border-radius:100px;padding:3px 10px;font-weight:600;white-space:nowrap}
+/* Accordion product items */
+.product-grid{display:flex;flex-direction:column;gap:8px}
+.product-item{background:var(--navy3);border:1px solid var(--border2);border-radius:10px;overflow:hidden;transition:border-color .2s}
+.product-item.open{border-color:var(--border)}
+.product-q{display:flex;align-items:center;justify-content:space-between;padding:15px 18px;cursor:pointer;gap:12px;user-select:none}
+.product-q:hover{background:rgba(201,148,58,0.04)}
+.product-q-left{display:flex;align-items:center;gap:12px}
+.product-q-left::before{content:'→';color:var(--gold);font-weight:700;font-size:14px;flex-shrink:0;transition:transform .3s}
+.product-item.open .product-q-left::before{content:'↓';color:var(--gold2)}
+.product-name{font-size:14px;font-weight:600;color:var(--cream)}
+.product-chevron{font-size:11px;color:var(--muted);transition:transform .3s;flex-shrink:0}
+.product-item.open .product-chevron{transform:rotate(180deg);color:var(--gold)}
+.product-desc{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s}
+.product-item.open .product-desc{max-height:200px}
+.product-desc-inner{padding:0 18px 16px 44px;font-size:13px;color:var(--muted);line-height:1.7;border-top:1px solid var(--border2)}
+.product-desc-inner p{padding-top:14px}
+.product-desc-inner .cta-link{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:12px;font-weight:700;color:var(--gold);text-decoration:none}
+.product-desc-inner .cta-link:hover{color:var(--gold2)}</style>
 </head>
 <body>
 <!-- NAV -->
@@ -32,6 +46,7 @@
     <a href="services.html">Services</a>
     <a href="about.html">About</a>
     <a href="reviews.html">Reviews</a>
+    <a href="claims.html">Claims</a>
     <a href="contact.html">Contact</a>
   </div>
 
@@ -53,6 +68,7 @@
   <a href="services.html">⚙️ Services</a>
   <a href="about.html">👥 About</a>
   <a href="reviews.html">⭐ Reviews</a>
+  <a href="claims.html">📋 File a Claim</a>
   <a href="contact.html">📍 Contact</a>
   <div class="mob-divider"></div>
   <a href="contact.html" class="mob-cta">Get a Free Quote →</a>
@@ -108,6 +124,8 @@ window.addEventListener("scroll", () => {
 </div>
 
 <section>
+
+  <!-- LIFE & HEALTH -->
   <div class="product-category reveal" id="life">
     <div class="cat-header">
       <div class="cat-icon">❤️</div>
@@ -115,22 +133,24 @@ window.addEventListener("scroll", () => {
       <span class="cat-count">14 Products</span>
     </div>
     <div class="product-grid">
-      <div class="product-pill">Term Life Insurance</div>
-      <div class="product-pill">Whole Life Insurance</div>
-      <div class="product-pill">Endowment Life Insurance</div>
-      <div class="product-pill">Group Life Insurance</div>
-      <div class="product-pill">Pension / Annuity Insurance</div>
-      <div class="product-pill">Funeral / Life Assistance</div>
-      <div class="product-pill">Loan / Mortgage Insurance</div>
-      <div class="product-pill">Accidental Death &amp; Dismemberment</div>
-      <div class="product-pill">Personal Accident Insurance</div>
-      <div class="product-pill">Group Personal Accident Insurance</div>
-      <div class="product-pill">Workmen's Compensation Insurance</div>
-      <div class="product-pill">Individual / Group Health Insurance</div>
-      <div class="product-pill">Medical Insurance</div>
-      <div class="product-pill">Travel Accident Insurance</div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Term Life Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Provides a death benefit to your beneficiaries if you pass away within a specified policy term. Affordable, straightforward protection for families and businesses during critical financial years.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Whole Life Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Permanent life coverage that lasts your entire lifetime, with a guaranteed death benefit and a cash value component that grows over time. Ideal for long-term financial planning.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Endowment Life Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Combines life insurance with a savings element. Pays out a lump sum at the end of the policy term or upon death — whichever comes first. Perfect for education, retirement, or investment goals.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Group Life Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Covers all employees under a single policy. Provides death benefits to the families of employees who pass away while employed. A key benefit for attracting and retaining staff in Ethiopia.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Pension / Annuity Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Provides a regular income stream during retirement in exchange for a lump sum or periodic premiums. Ensures financial security for employees and business owners in their post-working years.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Funeral / Life Assistance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Covers funeral and burial expenses to relieve families of financial burden during bereavement. Provides quick, hassle-free payout to cover immediate costs following a death.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Loan / Mortgage Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Pays off your outstanding loan or mortgage balance if you die or become unable to work. Protects both borrowers and lenders, ensuring debts don't become a burden to your family.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Accidental Death &amp; Dismemberment</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Pays a benefit if you die or suffer a serious injury (loss of limb, sight, or hearing) due to an accident. Provides financial protection beyond standard life insurance for high-risk occupations.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Personal Accident Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Covers medical expenses, disability, and death resulting from accidents. Available for individuals and families, providing financial support for hospital bills and lost income during recovery.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Group Personal Accident Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Provides accident coverage for all employees under one policy. Covers medical costs, temporary or permanent disability, and death benefits — essential for businesses with field workers or drivers.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Workmen's Compensation Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Legally required in Ethiopia for most employers. Covers employees injured or killed on the job, including medical expenses, rehabilitation costs, and compensation payments to families.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Individual / Group Health Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Covers medical treatment costs including hospitalization, surgery, consultations, and prescriptions. Available for individuals, families, or all employees as a group health benefit plan.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Medical Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Provides comprehensive coverage for inpatient and outpatient medical expenses. Includes emergency care, specialist visits, diagnostic tests, and prescribed medications across Ethiopian hospitals.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Travel Accident Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Covers accidents, medical emergencies, trip cancellations, and lost baggage during domestic or international travel. Essential for business travelers and expatriates operating in Ethiopia.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
     </div>
   </div>
+
+  <!-- GENERAL -->
   <div class="product-category reveal" id="general">
     <div class="cat-header">
       <div class="cat-icon">🛡️</div>
@@ -138,23 +158,25 @@ window.addEventListener("scroll", () => {
       <span class="cat-count">15 Products</span>
     </div>
     <div class="product-grid">
-      <div class="product-pill">Motor / Vehicle Insurance</div>
-      <div class="product-pill">Motor Trade Insurance</div>
-      <div class="product-pill">Fire &amp; Lightning Insurance (Allied Perils)</div>
-      <div class="product-pill">Burglary &amp; House Breaking Insurance</div>
-      <div class="product-pill">Plate Glass Insurance</div>
-      <div class="product-pill">Marine Cargo Insurance</div>
-      <div class="product-pill">Inland Transit Insurance</div>
-      <div class="product-pill">Carriers Liability Insurance</div>
-      <div class="product-pill">Consequential Loss Insurance</div>
-      <div class="product-pill">Fidelity Guarantee Insurance</div>
-      <div class="product-pill">Money Insurance</div>
-      <div class="product-pill">Public Liability Insurance</div>
-      <div class="product-pill">Political Violence &amp; Terrorism</div>
-      <div class="product-pill">Crop Insurance</div>
-      <div class="product-pill">Livestock Insurance</div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Motor / Vehicle Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Covers your vehicle against accidents, theft, fire, and third-party liability. Available as third-party only (legally required in Ethiopia) or comprehensive coverage for full protection.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Motor Trade Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Designed for vehicle dealers, garages, and repair shops. Covers vehicles in your care, custody, or control — including customer vehicles — against damage, theft, and third-party claims.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Fire &amp; Lightning Insurance (Allied Perils)</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Protects buildings, stock, and equipment against fire, lightning strikes, and allied perils including explosion, aircraft impact, and storm damage. Essential for warehouses and commercial properties.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Burglary &amp; House Breaking Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Covers loss of money, stock, and property resulting from forced entry, theft, or burglary. Includes damage to premises caused during a break-in. Vital for retail shops and offices.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Plate Glass Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Covers the cost of replacing or repairing fixed plate glass — windows, shop fronts, glass partitions, and display cabinets — accidentally broken or cracked. Ideal for retail and commercial premises.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Marine Cargo Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Covers goods in transit by sea, air, or overland against loss or damage. Critical for importers and exporters moving goods through Ethiopian ports and across international borders.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Inland Transit Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Covers goods transported by road, rail, or air within Ethiopia against loss, theft, or damage during transit. Essential for logistics companies and businesses moving high-value goods domestically.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Carriers Liability Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Protects transport and logistics companies against legal liability for loss or damage to goods belonging to customers while in their care during transit. Required for licensed carriers in Ethiopia.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Consequential Loss Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Also known as Business Interruption Insurance. Covers loss of income and ongoing expenses when your business is forced to stop operations due to an insured event like fire or flood.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Fidelity Guarantee Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Protects employers from financial losses caused by dishonest acts of employees — including theft, fraud, and embezzlement. Essential for businesses handling cash, inventory, or client funds.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Money Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Covers loss of cash, cheques, and other negotiable instruments — whether in transit, at the premises, or in a safe. Critical for businesses handling significant daily cash transactions.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Public Liability Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Protects your business against claims from third parties (customers, visitors, or members of the public) who suffer injury or property damage as a result of your business activities.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Political Violence &amp; Terrorism</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Covers physical damage to property and business interruption losses resulting from acts of terrorism, riots, strikes, civil commotion, and political unrest. Increasingly important in the Ethiopian market.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Crop Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Protects farmers and agricultural businesses against crop losses due to drought, flood, pests, disease, or other natural disasters. Supports Ethiopia's large agricultural sector.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Livestock Insurance</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Covers death or permanent disability of livestock — cattle, sheep, goats, camels, and horses — due to accident, disease, or natural disaster. Essential for Ethiopia's pastoralist communities and agribusinesses.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
     </div>
   </div>
+
+  <!-- ENGINEERING -->
   <div class="product-category reveal" id="engineering">
     <div class="cat-header">
       <div class="cat-icon">🏗️</div>
@@ -162,14 +184,16 @@ window.addEventListener("scroll", () => {
       <span class="cat-count">6 Products</span>
     </div>
     <div class="product-grid">
-      <div class="product-pill">Contractors All Risk Insurance (CAR)</div>
-      <div class="product-pill">Erection All Risk Insurance (EAR)</div>
-      <div class="product-pill">Contractors' Plant &amp; Machinery (CPM)</div>
-      <div class="product-pill">Machinery Breakdown Insurance (MBD)</div>
-      <div class="product-pill">Boiler &amp; Pressure Plant Insurance (BPP)</div>
-      <div class="product-pill">Electrical Equipment Insurance (EEI)</div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Contractors All Risk Insurance (CAR)</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Comprehensive coverage for construction projects from groundbreaking to handover. Covers physical damage to the works, materials, and third-party liability. Covers contractors, employers, and subcontractors jointly under one policy.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Erection All Risk Insurance (EAR)</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Covers the installation and erection of machinery, steel structures, and mechanical or electrical equipment. Protects against accidental damage during testing, commissioning, and erection phases.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Contractors' Plant &amp; Machinery (CPM)</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Covers mobile and stationary construction equipment — excavators, cranes, bulldozers, and compactors — against accidental damage, fire, theft, and overturning while on the construction site.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Machinery Breakdown Insurance (MBD)</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Covers sudden and unforeseen mechanical or electrical breakdown of machinery and equipment. Includes the cost of repair or replacement, and can cover loss of income from production stoppages.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Boiler &amp; Pressure Plant Insurance (BPP)</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Covers damage caused by explosion or collapse of boilers, pressure vessels, and steam pipes. Also includes third-party injury and property damage arising from such incidents.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Electrical Equipment Insurance (EEI)</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Covers computers, servers, communication systems, and other electrical installations against accidental damage, power surges, short circuits, and operator error. Ideal for offices and data centres.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
     </div>
   </div>
+
+  <!-- BONDS -->
   <div class="product-category reveal" id="bonds">
     <div class="cat-header">
       <div class="cat-icon">📜</div>
@@ -177,13 +201,14 @@ window.addEventListener("scroll", () => {
       <span class="cat-count">5 Products</span>
     </div>
     <div class="product-grid">
-      <div class="product-pill">Advance Payment Bond</div>
-      <div class="product-pill">Performance Bond</div>
-      <div class="product-pill">Bid Bond</div>
-      <div class="product-pill">Maintenance Bond</div>
-      <div class="product-pill">Customs Bond</div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Advance Payment Bond</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Guarantees that advance payments made by a client to a contractor will be repaid if the contractor fails to fulfil their contractual obligations. Required for most government and large commercial contracts in Ethiopia.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Performance Bond</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Guarantees that a contractor will complete a project according to the terms of the contract. If they fail, the bond compensates the client for losses incurred. Mandatory for most Ethiopian government tenders.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Bid Bond</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Guarantees that a bidder will enter into a contract and provide the required performance bond if awarded a tender. Protects the employer from bidders who withdraw after winning. Required for most public tenders in Ethiopia.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Maintenance Bond</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>Covers the defects liability period after project completion. Guarantees the contractor will rectify any defects that arise during the maintenance period specified in the contract.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
+      <div class="product-item"><div class="product-q" onclick="toggle(this)"><div class="product-q-left"><span class="product-name">Customs Bond</span></div><span class="product-chevron">▼</span></div><div class="product-desc"><div class="product-desc-inner"><p>A financial guarantee required by Ethiopian Customs Authority to secure payment of import duties and taxes on goods temporarily imported or stored in bonded warehouses. Essential for importers and freight forwarders.</p><a href="contact.html" class="cta-link">Get a Quote →</a></div></div></div>
     </div>
   </div>
+
 </section>
 
 <section style="background:var(--navy2);text-align:center">
@@ -227,6 +252,7 @@ window.addEventListener("scroll", () => {
         <li><a href="about.html">About Us</a></li>
         <li><a href="services.html">Our Services</a></li>
         <li><a href="reviews.html">Client Reviews</a></li>
+        <li><a href="claims.html">File a Claim</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
@@ -255,6 +281,16 @@ const obs = new IntersectionObserver(e => e.forEach(el => {
   if (el.isIntersecting) { el.target.classList.add('visible'); obs.unobserve(el.target); }
 }), { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+<script>
+function toggle(el) {
+  const item = el.closest('.product-item');
+  const isOpen = item.classList.contains('open');
+  // Close all others in same grid
+  item.closest('.product-grid').querySelectorAll('.product-item.open').forEach(i => i.classList.remove('open'));
+  // Toggle this one
+  if (!isOpen) item.classList.add('open');
+}
 </script>
 </body>
 </html>

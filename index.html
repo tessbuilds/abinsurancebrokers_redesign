@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
 <title>Abiy &amp; Binyam Insurance Brokers — Ethiopia's #1 Insurance Broker</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="shared.css"/>
@@ -189,14 +189,21 @@
 .whatsapp-cta:hover { transform:translateY(-2px);box-shadow:0 10px 28px rgba(34,197,94,0.4); }
 
 @media(max-width:900px){
-  .hero { grid-template-columns:1fr; padding:100px 5vw 60px; gap:48px; }
-  .hero-right { order: -1; }
-  .hero-logo-wrap img { width:200px;height:200px; }
+  .hero { grid-template-columns:1fr; padding:110px 5vw 60px; gap:36px; }
+  .hero-right { order: 1; } /* logo below text on mobile */
+  .hero-logo-wrap img { width:180px; height:180px; }
+  .hero-logo-wrap { display:flex; justify-content:center; }
+  .quick-contacts { grid-template-columns:1fr 1fr; }
   .process-steps::before { display:none; }
 }
 @media(max-width:600px){
-  .hero-stats { gap:20px; }
-  .quick-contacts { grid-template-columns:1fr; }
+  .hero { padding:100px 4vw 48px; gap:28px; }
+  .hero-stats { gap:16px; }
+  .hero-logo-wrap img { width:150px; height:150px; }
+  .quick-contacts { grid-template-columns:1fr 1fr; gap:8px; }
+  .qc-card { padding:12px 10px; gap:8px; }
+  .qc-val { font-size:11px; }
+  .qc-label { font-size:10px; }
 }
 </style>
 </head>
@@ -214,6 +221,7 @@
     <a href="services.html">Services</a>
     <a href="about.html">About</a>
     <a href="reviews.html">Reviews</a>
+    <a href="claims.html">Claims</a>
     <a href="contact.html">Contact</a>
   </div>
   <div class="nav-actions">
@@ -232,6 +240,7 @@
   <a href="services.html">⚙️ Services</a>
   <a href="about.html">👥 About</a>
   <a href="reviews.html">⭐ Reviews</a>
+  <a href="claims.html">📋 File a Claim</a>
   <a href="contact.html">📍 Contact</a>
   <div class="mob-divider"></div>
   <a href="contact.html" class="mob-cta">Get a Free Quote →</a>
@@ -544,6 +553,7 @@ window.addEventListener('resize', () => {
         <li><a href="about.html">About Us</a></li>
         <li><a href="services.html">Our Services</a></li>
         <li><a href="reviews.html">Client Reviews</a></li>
+        <li><a href="claims.html">File a Claim</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
