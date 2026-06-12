@@ -2,10 +2,68 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<meta name="theme-color" content="#050d1a"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <title>Client Reviews — Abiy &amp; Binyam Insurance Brokers</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/></noscript>
 <link rel="stylesheet" href="shared.css"/>
+<style>
+/* ── Critical Nav CSS (embedded) ── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  padding:0 5vw;
+  display:flex; align-items:center; justify-content:space-between;
+  height:86px;
+  background:rgba(5,13,26,0.95);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(201,148,58,0.18);
+  transition:box-shadow .3s;
+}
+.nav-logo { display:flex; align-items:center; gap:12px; flex-shrink:0; }
+.logo-text { font-family:'Playfair Display',serif; font-weight:700; font-size:1.05rem; line-height:1.2; }
+.logo-text span { display:block; font-family:'Outfit',sans-serif; font-size:10px; font-weight:400; color:#7a8fa8; letter-spacing:2px; text-transform:uppercase; margin-top:1px; }
+.nav-links { display:flex; align-items:center; gap:28px; }
+.nav-links a { font-size:14px; font-weight:500; color:rgba(250,246,238,0.65); transition:color .2s; white-space:nowrap; text-decoration:none; }
+.nav-links a:hover, .nav-links a.active { color:#e8b85a; }
+.nav-actions { display:flex; align-items:center; gap:10px; flex-shrink:0; }
+.nav-cta { background:linear-gradient(135deg,#c9943a,#e8b85a); color:#050d1a; padding:10px 22px; border-radius:8px; font-size:13px; font-weight:700; border:none; cursor:pointer; white-space:nowrap; }
+.burger {
+  display:none;
+  flex-direction:column; justify-content:center; align-items:center;
+  gap:5px; width:42px; height:42px; border-radius:8px;
+  background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.07);
+  cursor:pointer; flex-shrink:0; transition:background .2s;
+}
+.burger span { display:block; width:20px; height:2px; background:#faf6ee; border-radius:2px; transition:all .3s; }
+.burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+.burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+.mobile-menu {
+  display:none; position:fixed; top:76px; left:0; right:0; bottom:0;
+  background:rgba(5,13,26,0.98); backdrop-filter:blur(24px);
+  z-index:999; flex-direction:column; padding:32px 5vw 40px;
+  gap:8px; overflow-y:auto;
+  transform:translateY(-10px); opacity:0;
+  transition:opacity .25s, transform .25s; pointer-events:none;
+}
+.mobile-menu.open { display:flex; opacity:1; transform:translateY(0); pointer-events:all; }
+.mobile-menu a { display:flex; align-items:center; padding:16px 20px; font-size:1.1rem; font-weight:600; color:rgba(250,246,238,0.75); border-radius:10px; border:1px solid transparent; transition:all .2s; }
+.mobile-menu a:hover, .mobile-menu a.active { background:rgba(201,148,58,0.08); border-color:rgba(201,148,58,0.18); color:#e8b85a; }
+.mob-divider { height:1px; background:rgba(255,255,255,0.07); margin:8px 0; }
+.mob-cta { margin-top:8px; background:linear-gradient(135deg,#c9943a,#e8b85a); color:#050d1a; font-weight:700; font-size:15px; padding:16px 20px; border-radius:10px; border:none; display:flex; align-items:center; justify-content:center; gap:8px; cursor:pointer; width:100%; }
+.mob-wa { background:linear-gradient(135deg,#22c55e,#16a34a); color:#fff; font-weight:700; font-size:14px; padding:14px 20px; border-radius:10px; display:flex; align-items:center; justify-content:center; gap:8px; margin-top:4px; }
+@media(max-width:900px) {
+  .nav-links { display:none; }
+  .nav-cta   { display:none; }
+  .burger    { display:flex !important; }
+}
+</style>
 <style>
 .review-card{background:var(--navy3);border:1px solid var(--border2);border-radius:var(--r);padding:28px;transition:all .3s;position:relative}
 .review-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);border-radius:var(--r) var(--r) 0 0}
@@ -27,13 +85,52 @@
 .form-textarea{resize:vertical;min-height:100px}
 .star-rate{display:flex;gap:8px;margin-bottom:16px;font-size:28px;cursor:pointer}
 .star-rate span{color:var(--muted);transition:color .1s}
-.star-rate span.on{color:var(--gold)}</style>
+.star-rate span.on{color:var(--gold)}
+/* ── Quote Modal ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(5,13,26,0.92);backdrop-filter:blur(8px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-box{background:var(--navy3);border:1px solid var(--border);border-radius:20px;padding:40px;width:100%;max-width:520px;position:relative;transform:translateY(24px);transition:transform .3s;max-height:90vh;overflow-y:auto}
+.modal-overlay.open .modal-box{transform:translateY(0)}
+.modal-close{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.06);border:1px solid var(--border2);color:var(--muted);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.modal-close:hover{background:rgba(201,148,58,0.1);border-color:var(--border);color:var(--cream)}
+.modal-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:6px}
+.modal-sub{font-size:13px;color:var(--muted);margin-bottom:28px}
+.modal-label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;display:block}
+.modal-input,.modal-select,.modal-textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border2);border-radius:8px;padding:11px 14px;color:var(--cream);font-family:'Outfit',sans-serif;font-size:14px;outline:none;transition:border-color .2s;margin-bottom:16px;appearance:none}
+.modal-input:focus,.modal-select:focus,.modal-textarea:focus{border-color:var(--gold)}
+.modal-textarea{resize:vertical;min-height:90px}
+.modal-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.modal-success{text-align:center;padding:20px 0;display:none}
+.modal-success.show{display:block}
+.modal-ref{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);font-weight:700;margin:12px 0}
+@media(max-width:600px){.modal-row{grid-template-columns:1fr}}
+
+
+@media(max-width:600px){
+  /* Score box + reviews: stack vertically */
+  div[style*="grid-template-columns:1fr 3fr"] { display:block!important; }
+  .score-box { margin-bottom:28px; }
+  /* Google CTA: stack */
+  div[style*="grid-template-columns:1fr 1fr;gap:48px"] { display:block!important; }
+  div[style*="grid-template-columns:1fr 1fr;gap:48px"] > div:last-child { margin-top:24px; }
+}
+
+
+/* ── Burger explicit fix ── */
+@media(max-width:900px){
+  .burger { display:flex !important; }
+  .nav-actions { gap:8px; }
+}
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+<style>@media(max-width:600px){input,select,textarea{font-size:16px!important}}</style>
 </head>
 <body>
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo" style="text-decoration:none;color:inherit">
-    <img src="logo.png" alt="ABIB Logo" style="width:65px;height:65px;border-radius:10px;object-fit:cover;flex-shrink:0"/>
+    <img src="logo.png" alt="ABIB Logo" style="width:74px;height:74px;border-radius:10px;object-fit:cover;flex-shrink:0"/>
     <div class="logo-text">Abiy &amp; Binyam<span>Insurance Brokers · Ethiopia</span></div>
   </a>
 
@@ -50,8 +147,7 @@
 
   <!-- Desktop right actions -->
   <div class="nav-actions">
-    <div class="nav-lang">🌐 EN | አማርኛ</div>
-    <a href="contact.html"><button class="nav-cta">Get a Quote →</button></a>
+<button class="nav-cta" onclick="openQuoteModal()">Get a Quote →</button>
     <!-- Burger (visible on mobile) -->
     <button class="burger" id="burgerBtn" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -69,18 +165,17 @@
   <a href="claims.html">📋 File a Claim</a>
   <a href="contact.html">📍 Contact</a>
   <div class="mob-divider"></div>
-  <a href="contact.html" class="mob-cta">Get a Free Quote →</a>
+  <button class="mob-cta" style="border:none;cursor:pointer" onclick="openQuoteModal();closeMenu()">Get a Free Quote →</button>
   <a href="https://wa.me/251951444455" target="_blank" class="mob-wa">📱 WhatsApp: +251-951-44-44-55</a>
-  <div class="mob-lang">🌐 EN | አማርኛ</div>
 </div>
 
 <!-- FLOATING BUTTONS -->
 <div class="floating-actions">
   <a href="https://wa.me/251951444455?text=Hello%2C%20I%20would%20like%20a%20free%20insurance%20quote." target="_blank">
-    <button class="float-btn wa-float" title="WhatsApp Us">📱</button>
+    <button class="float-btn wa-float" title="WhatsApp Us"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.528 5.845L.057 23.428a.5.5 0 0 0 .609.61l5.69-1.485A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.87 9.87 0 0 1-5.031-1.378l-.36-.214-3.733.975.998-3.645-.235-.374A9.861 9.861 0 0 1 2.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg></button>
   </a>
   <a href="https://t.me/abinsurancebrokers" target="_blank">
-    <button class="float-btn tel-float" title="Telegram">✈️</button>
+    <button class="float-btn tel-float" title="Telegram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="white"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></button>
   </a>
 </div>
 
@@ -100,7 +195,7 @@ burger.addEventListener("click", () => {
   document.body.style.overflow = menu.classList.contains("open") ? "hidden" : "";
 });
 
-menu.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+menu.querySelectorAll("a, button").forEach(el => el.addEventListener("click", closeMenu));
 
 window.addEventListener("resize", () => {
   if (window.innerWidth > 900) closeMenu();
@@ -125,32 +220,48 @@ window.addEventListener("scroll", () => {
     <div class="score-box reveal">
       <div class="big-score">5.0</div>
       <div style="color:var(--gold);font-size:22px;letter-spacing:3px;margin:8px 0">★★★★★</div>
-      <div style="font-size:13px;color:var(--muted)">Based on 5 verified reviews</div>
+      <div style="font-size:13px;color:var(--muted)">Based on 7 verified reviews</div>
       <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px">
-        <div style="display:flex;align-items:center;gap:8px;font-size:12px"><span style="color:var(--gold)">5★</span><div style="flex:1;height:6px;background:var(--navy2);border-radius:3px;overflow:hidden"><div style="width:100%;height:100%;background:var(--gold);border-radius:3px"></div></div><span style="color:var(--muted)">5</span></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px"><span style="color:var(--gold)">5★</span><div style="flex:1;height:6px;background:var(--navy2);border-radius:3px;overflow:hidden"><div style="width:100%;height:100%;background:var(--gold);border-radius:3px"></div></div><span style="color:var(--muted)">7</span></div>
         <div style="display:flex;align-items:center;gap:8px;font-size:12px"><span style="color:var(--gold)">4★</span><div style="flex:1;height:6px;background:var(--navy2);border-radius:3px"></div><span style="color:var(--muted)">0</span></div>
         <div style="display:flex;align-items:center;gap:8px;font-size:12px"><span style="color:var(--gold)">3★</span><div style="flex:1;height:6px;background:var(--navy2);border-radius:3px"></div><span style="color:var(--muted)">0</span></div>
       </div>
     </div>
     <div style="display:flex;flex-direction:column;gap:20px">
+      <div class="review-card reveal"><div class="stars">★★★★★</div><div class="qmark">"</div><p class="review-text">We have worked with ABIB for a very long time now, their service has been excellent and very consistent throughout the years. Very professional and their response time to accidents is exceptionally great.</p><div class="reviewer"><div class="rev-avatar">NM</div><div><div class="rev-name">Nigiru</div><div class="rev-role">Verified Client</div><div class="rev-date">June 12, 2026</div></div></div></div>
+      <div class="review-card reveal"><div class="stars">★★★★★</div><div class="qmark">"</div><p class="review-text">Our experience with the firm for the last 12 years has been highly satisfactory. Their professionalism, integrity, and commitment to client advocacy reflect the qualities of a reliable Insurance Broker. We gladly recommend their services to institutions seeking dependable insurance advisory and brokerage support.</p><div class="reviewer"><div class="rev-avatar">NK</div><div><div class="rev-name">Nigru Kibret, CEO</div><div class="rev-role">NK General Contractor</div><div class="rev-date">June 4, 2026 · 12-year client</div></div></div></div>
       <div class="review-card reveal"><div class="stars">★★★★★</div><div class="qmark">"</div><p class="review-text">The firm has demonstrated remarkable professionalism, transparency, and dedication in representing the interests of our Organization. Their technical expertise and client-focused approach make them a trusted partner in insurance matters. We are pleased to recommend their brokerage services to other organizations.</p><div class="reviewer"><div class="rev-avatar">RT</div><div><div class="rev-name">Rahel Terefe, CEO</div><div class="rev-role">ICMC General Hospital</div><div class="rev-date">May 8, 2026</div></div></div></div>
-      <div class="review-card reveal"><div class="stars">★★★★★</div><div class="qmark">"</div><p class="review-text">ABIB is a highly professional insurance company. They have managed the insurance for my company Prime Meat's properties for the past 17 years. They are very skilled in researching and finding the best insurance companies that cater to our particular business, and negotiating the best terms on our behalf. I cannot recommend them enough!</p><div class="reviewer"><div class="rev-avatar">KA</div><div><div class="rev-name">Dr Kassahun Abberu</div><div class="rev-role">Owner Manager — Prime Meat and Food Products</div><div class="rev-date">March 5, 2026 · 17-year client</div></div></div></div>
-      <div class="review-card reveal"><div class="stars">★★★★★</div><div class="qmark">"</div><p class="review-text">We have had the privilege of working with ABIB Insurance Brokers for over 15 years, and throughout this period we have found them to be highly professional and reliable risk management partners with a strong sense of integrity. We confidently recommend ABIB Insurance Brokers to any organization seeking a professional and trustworthy insurance brokerage service.</p><div class="reviewer"><div class="rev-avatar">AG</div><div><div class="rev-name">Akalu Geleta, CEO</div><div class="rev-role">Akakas Logistics Plc</div><div class="rev-date">March 4, 2026 · 15-year client</div></div></div></div>
+      <div class="review-card reveal"><div class="stars">★★★★★</div><div class="qmark">"</div><p class="review-text">ABIB is a highly professional insurance company. They have managed the insurance for my company Prime Meat's properties for the past 17 years. They are very skilled in researching and finding the best insurance companies that cater to our particular business, and negotiating the best terms on our behalf. They found the best deals for us and we've been happy since. Any problem we've had with our properties, they quickly filed claims to guarantee smooth coverage, therefore saving us a lot in time and money. I cannot recommend them enough!</p><div class="reviewer"><div class="rev-avatar">KA</div><div><div class="rev-name">Dr Kassahun Abberu</div><div class="rev-role">Owner Manager — Prime Meat and Food Products</div><div class="rev-date">March 5, 2026 · 17-year client</div></div></div></div>
+      <div class="review-card reveal"><div class="stars">★★★★★</div><div class="qmark">"</div><p class="review-text">We have had the privilege of working with ABIB Insurance Brokers for over 15 years, and throughout this period we have found them to be highly professional and reliable risk management partners with a strong sense of integrity. Their team consistently goes the extra mile to support their clients, particularly in facilitating and following up on insurance claims arising from accidents and damages. Their proactive approach, combined with their helpful attitude and positive outlook, has made working with them both efficient and reassuring. ABIB has also been very responsive in securing competitive quotations, ensuring timely follow-ups on policy renewals, and providing valuable advice on the most appropriate insurance coverages for our needs. We confidently recommend ABIB Insurance Brokers to any organization seeking a professional and trustworthy insurance brokerage service.</p><div class="reviewer"><div class="rev-avatar">AG</div><div><div class="rev-name">Akalu Geleta, CEO</div><div class="rev-role">Akakas Logistics Plc</div><div class="rev-date">March 4, 2026 · 15-year client</div></div></div></div>
       <div class="review-card reveal"><div class="stars">★★★★★</div><div class="qmark">"</div><p class="amharic-text">አቢይ እና ቢንያም ኢንሹራንስ ብሮከርስ በኢትዮጵያ ውስጥ በእውነት የሚታመን እና የተሟላ አገልግሎት የሚሰጥ ድርጅት ነው። ቡድናቸው በጣም ባለሙያ ናቸው፣ የደንበኞችን ፍላጎት በትክክል ይሰማሉ እና ለእያንዳንዱ ሰው ተስማሚ የሆነ የኢንሹራንስ መፍትሄ ያቀርባሉ።</p><div class="reviewer"><div class="rev-avatar">ኤ</div><div><div class="rev-name">ኤፍረም</div><div class="rev-role">Verified Client</div><div class="rev-date">January 28, 2026</div></div></div></div>
       <div class="review-card reveal"><div class="stars">★★★★★</div><div class="qmark">"</div><p class="review-text">We were impressed by how Abiy &amp; Binyam Insurance Brokers navigated the Ethiopian insurance market to secure a very good deal for our business. Their transparency, professionalism, and deep knowledge of the local market made the entire process smooth and stress-free.</p><div class="reviewer"><div class="rev-avatar">DV</div><div><div class="rev-name">Dave</div><div class="rev-role">Business Owner</div><div class="rev-date">January 25, 2026</div></div></div></div>
-    </div>
+      </div>
   </div>
 </section>
 <section style="background:var(--navy2)">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:flex-start">
-    <div class="reveal"><div class="section-tag">Share Your Experience</div><h2 class="section-title">Write a Review</h2><p style="color:var(--muted);font-size:14px;margin-bottom:28px">Your feedback helps other Ethiopian businesses make informed insurance decisions.</p></div>
-    <div class="write-form reveal">
-      <div class="form-label">Your Overall Rating</div>
-      <div class="star-rate" id="stars"><span onclick="rate(1)">★</span><span onclick="rate(2)">★</span><span onclick="rate(3)">★</span><span onclick="rate(4)">★</span><span onclick="rate(5)">★</span></div>
-      <label class="form-label">Review Title</label><input class="form-input" placeholder="Summarize your experience"/>
-      <label class="form-label">Your Review</label><textarea class="form-textarea" placeholder="Share details about your experience with ABIB..."></textarea>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div><label class="form-label">Your Name</label><input class="form-input" placeholder="Full name or company"/></div><div><label class="form-label">Your Email</label><input class="form-input" placeholder="email@company.com"/></div></div>
-      <button class="btn-primary" style="width:100%;justify-content:center" onclick="alert('Thank you! Your review has been submitted.')">Submit Review →</button>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
+    <div class="reveal">
+      <div class="section-tag">Share Your Experience</div>
+      <h2 class="section-title">Leave Us a Google Review</h2>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:28px;line-height:1.8">Your review helps other Ethiopian businesses and individuals make confident insurance decisions — and it takes less than a minute on Google.</p>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px">
+        <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(250,246,238,.65)"><span style="color:var(--gold);font-size:18px">✓</span> Shows up instantly on Google Search &amp; Maps</div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(250,246,238,.65)"><span style="color:var(--gold);font-size:18px">✓</span> Helps other businesses find trusted coverage</div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(250,246,238,.65)"><span style="color:var(--gold);font-size:18px">✓</span> Just needs a Google account — free &amp; easy</div>
+      </div>
+      <a href="https://g.page/r/ABIB_PLACE_ID_PLACEHOLDER/review" target="_blank" rel="noopener">
+        <button class="btn-primary" style="gap:12px;font-size:15px;padding:15px 32px">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Write a Google Review →
+        </button>
+      </a>
+    </div>
+    <div class="reveal" style="background:var(--navy3);border:1px solid var(--border);border-radius:16px;padding:32px;text-align:center">
+      <div style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px">Our Google Rating</div>
+      <div style="font-family:'Playfair Display',serif;font-size:5rem;font-weight:900;background:linear-gradient(135deg,var(--gold),#f5d38a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1">5.0</div>
+      <div style="color:var(--gold);font-size:24px;letter-spacing:4px;margin:10px 0">★★★★★</div>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:24px">Based on 7 verified reviews</div>
+      <a href="https://g.page/r/ABIB_PLACE_ID_PLACEHOLDER/review" target="_blank" rel="noopener" style="font-size:13px;color:var(--gold);font-weight:600;text-decoration:underline;text-underline-offset:3px">View all reviews on Google →</a>
     </div>
   </div>
 </section>
@@ -162,7 +273,7 @@ window.addEventListener("scroll", () => {
   <div class="footer-grid">
     <div class="footer-brand">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
-        <img src="logo.png" alt="ABIB Logo" style="width:48px;height:48px;border-radius:10px;object-fit:cover"/>
+        <img src="logo.png" alt="ABIB Logo" style="width:48px;height:48px;border-radius:10px;object-fit:cover" loading="lazy"/>
         <div class="logo-text">Abiy &amp; Binyam<span>Insurance Brokers</span></div>
       </div>
       <p>Ethiopia's trusted insurance brokerage since 1996. Connecting businesses and individuals with the right coverage. Licensed &amp; regulated by the National Bank of Ethiopia.</p>
@@ -202,7 +313,7 @@ window.addEventListener("scroll", () => {
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Abiy &amp; Binyam Insurance Brokers. All rights reserved.</span>
+    <span>© <span id="year"></span> Abiy &amp; Binyam Insurance Brokers. All rights reserved.</span><script>document.getElementById("year").textContent=new Date().getFullYear();</script>
     <div class="nbe-badge">🏦 NBE Licensed · Reg No. LB/006/95</div>
     <div style="display:flex;gap:16px">
       <a href="#" style="color:var(--muted)">Privacy Policy</a>
@@ -215,6 +326,151 @@ const obs = new IntersectionObserver(e => e.forEach(el => {
   if (el.isIntersecting) { el.target.classList.add('visible'); obs.unobserve(el.target); }
 }), { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+<!-- QUOTE MODAL -->
+<div class="modal-overlay" id="quoteModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeQuoteModal()">✕</button>
+
+    <!-- Form view -->
+    <div id="modalFormView">
+      <div class="modal-title">Get a Free Quote</div>
+      <p class="modal-sub">Fill in a few details and our team will respond within one business day — at zero cost to you.</p>
+      <div class="modal-row">
+        <div><label class="modal-label">First Name <span style="color:var(--gold)">*</span></label><input class="modal-input" id="mFirstName" placeholder="Abebe" required/></div>
+        <div><label class="modal-label">Last Name <span style="color:var(--gold)">*</span></label><input class="modal-input" id="mLastName" placeholder="Kebede" required/></div>
+      </div>
+      <label class="modal-label">Phone Number <span style="color:var(--gold)">*</span></label>
+      <input class="modal-input" id="mPhone" placeholder="+251 9__ __ __ __" required/>
+      <label class="modal-label">Email Address</label>
+      <input class="modal-input" id="mEmail" placeholder="you@company.com" type="email"/>
+      <label class="modal-label">Insurance Type Needed <span style="color:var(--gold)">*</span></label>
+      <select class="modal-select" id="mInsuranceType">
+        <option value="">— Select insurance type —</option>
+        <option>Business Insurance</option>
+        <option>Motor / Vehicle Insurance</option>
+        <option>Contractors All Risk (CAR)</option>
+        <option>Property Insurance</option>
+        <option>Liability Insurance</option>
+        <option>Life / Health Insurance</option>
+        <option>Workmen's Compensation</option>
+        <option>Engineering Insurance</option>
+        <option>Insurance Bond</option>
+        <option>Not sure — need advice</option>
+      </select>
+      <label class="modal-label">Message (optional)</label>
+      <textarea class="modal-textarea" id="mMessage" placeholder="Tell us briefly about your business and what you need to insure..."></textarea>
+      <button class="btn-primary" style="width:100%;justify-content:center" onclick="submitQuoteModal()">
+        <span id="mBtnText">Send Quote Request →</span>
+      </button>
+      <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:12px">🔒 100% Confidential · NBE Licensed · No service fees</p>
+    </div>
+
+    <!-- Success view -->
+    <div class="modal-success" id="modalSuccess">
+      <div style="font-size:48px;margin-bottom:16px">✅</div>
+      <div class="modal-title">Quote Request Sent!</div>
+      <div class="modal-ref" id="mRefNumber"></div>
+      <p style="color:var(--muted);font-size:13px;line-height:1.8;margin-bottom:24px">Thank you! Our team will review your request and contact you within <strong style="color:var(--cream)">one business day</strong>.<br/>Keep your reference number for follow-up.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="https://wa.me/251951444455" target="_blank"><button class="btn-primary" style="font-size:13px;padding:11px 20px">📱 WhatsApp Us</button></a>
+        <button class="btn-outline" onclick="closeQuoteModal()" style="font-size:13px;padding:11px 20px">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+// ── Quote Modal ──────────────────────────────────────────────
+// TODO: Replace with your real EmailJS credentials
+const QUOTE_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
+const QUOTE_SERVICE_ID  = 'YOUR_SERVICE_ID';
+const QUOTE_TEMPLATE_ID = 'YOUR_TEMPLATE_ID_QUOTE'; // New template: quote request to team
+
+emailjs.init({ publicKey: QUOTE_PUBLIC_KEY });
+
+function openQuoteModal(insuranceType) {
+  const modal = document.getElementById('quoteModal');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  if (insuranceType) {
+    const sel = document.getElementById('mInsuranceType');
+    for (let opt of sel.options) {
+      if (opt.value === insuranceType || opt.text === insuranceType) {
+        sel.value = opt.value; break;
+      }
+    }
+  }
+}
+
+function closeQuoteModal() {
+  document.getElementById('quoteModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close on overlay click
+document.getElementById('quoteModal').addEventListener('click', function(e) {
+  if (e.target === this) closeQuoteModal();
+});
+
+// Close on Escape
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeQuoteModal(); });
+
+async function submitQuoteModal() {
+  const firstName = document.getElementById('mFirstName').value.trim();
+  const lastName  = document.getElementById('mLastName').value.trim();
+  const phone     = document.getElementById('mPhone').value.trim();
+  const email     = document.getElementById('mEmail').value.trim();
+  const insType   = document.getElementById('mInsuranceType').value;
+  const message   = document.getElementById('mMessage').value.trim();
+
+  if (!firstName || !lastName || !phone || !insType) {
+    alert('Please fill in all required fields (First Name, Last Name, Phone, Insurance Type).');
+    return;
+  }
+
+  // Generate reference
+  const now      = new Date();
+  const year     = now.getFullYear();
+  const initials = ((firstName[0] || 'X') + (lastName[0] || 'X')).toUpperCase();
+  const random   = Math.floor(1000 + Math.random() * 9000);
+  const mins     = String(now.getMinutes()).padStart(2, '0');
+  const secs     = String(now.getSeconds()).padStart(2, '0');
+  const ref      = `QTE-${year}-${initials}-${random}-${mins}${secs}`;
+
+  const submittedAt = now.toLocaleString('en-ET', {
+    dateStyle: 'full', timeStyle: 'short', timeZone: 'Africa/Addis_Ababa'
+  });
+
+  const btn = document.getElementById('mBtnText');
+  btn.textContent = 'Sending...';
+
+  try {
+    await emailjs.send(QUOTE_SERVICE_ID, QUOTE_TEMPLATE_ID, {
+      ref_number:       ref,
+      submitted_at:     submittedAt,
+      first_name:       firstName,
+      last_name:        lastName,
+      phone:            phone,
+      client_email:     email || 'Not provided',
+      insurance_type:   insType,
+      message:          message || 'No additional message.',
+    });
+
+    document.getElementById('mRefNumber').textContent = 'Reference: ' + ref;
+    document.getElementById('modalFormView').style.display = 'none';
+    document.getElementById('modalSuccess').classList.add('show');
+
+  } catch (err) {
+    console.error('EmailJS quote error:', err);
+    alert('Something went wrong. Please WhatsApp us directly at +251-951-44-44-55.');
+    btn.textContent = 'Send Quote Request →';
+  }
+}
+// ─────────────────────────────────────────────────────────────
+
 </script>
 </body>
 </html>
