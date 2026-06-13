@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://abinsurancebrokers.com/sitemap.xml
+
+# Disallow any temp or draft files
+Disallow: /draft/
+Disallow: /test/
